@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Rubik, Playfair_Display, Geist } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import Header from "@/components/Header";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
@@ -28,7 +29,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" className={cn(rubik.variable, playfairDisplay.variable, "font-sans", geist.variable)}>
-      <body>{children}</body>
+      <body>
+        {children}
+        </body>
     </html>
   );
 }
