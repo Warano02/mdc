@@ -55,7 +55,7 @@ const navItems = [
   { label: "CONTACT US", href: "/contact" },
 ] as const;
 interface HeaderProps {
-  onLoginOpen: () => void;
+  onLoginOpen?: () => void;
 }
 export default function Header({ onLoginOpen }: HeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
