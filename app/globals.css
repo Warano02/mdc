@@ -110,16 +110,11 @@ h6 {
 
 p {
   font-family: var(--font-body);
-  color: var(--color-gray-800);
 }
 a {
-  color: var(--color-primary);
   text-decoration: none;
-  transition: color var(--transition-fast);
 }
-a:hover {
-  color: var(--color-primary-light);
-}
+
 
 @theme inline {
   --font-heading: var(--font-sans);

@@ -2,132 +2,117 @@
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Menu, Search, ChevronDown, X } from "lucide-react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-const languages = [
-  { code: "en", label: "English", flag: "/img/flag/United Kingdom.png" },
-  { code: "fr", label: "Français", flag: "/img/flag/France.png" },
-] as const;
-type LangCode = (typeof languages)[number]["code"];
-const navItems = [
+import { Menu, Search, ChevronDown, ChevronRight, X } from "lucide-react";
+import SignupDialog from "@/components/SignupDialog";
+import LoginForm from "./LoginForm";
+type SubItem = { label: string; hasNested?: boolean };
+type NavItem =
+  | { label: string; href: string }
+  | { label: string; submenu: SubItem[] };
+
+const navItems: NavItem[] = [
   {
     label: "CANADIAN VISAS",
     submenu: [
-      "Express Entry System",
-      "Tourist Visa",
-      "Working Holiday Visa",
-      "Student Visa",
-      "Start-up Visa Program",
-      "Business Immigration Program",
-      "Provincial Nominee Program",
-      "Family Sponsorship Visa",
-      "Pilot Programs",
+      { label: "Express Entry System" },
+      { label: "Tourist Visa" },
+      { label: "Working Holiday Visa" },
+      { label: "Student Visa" },
+      { label: "Start-up Visa Program" },
+      { label: "Business Immigration Programs" },
+      { label: "Provincial Nominee Program", hasNested: true },
+      { label: "Family Sponsorship Visa" },
+      { label: "Pilot Programs", hasNested: true },
     ],
   },
   { label: "WHY USE AN RCIC?", href: "/why-use-an-rcic" },
   {
     label: "ABOUT CANADA",
     submenu: [
-      "British Columbia",
-      "Alberta",
-      "Ontario",
-      "Quebec",
-      "New Brunswick",
-      "Manitoba",
-      "Saskatchewan",
-      "Newfoundland & Labrador",
-      "Nova Scotia",
-      "Nunavut",
-      "Yukon",
+      { label: "British Columbia" },
+      { label: "Alberta" },
+      { label: "Ontario" },
+      { label: "Quebec" },
+      { label: "New Brunswick" },
+      { label: "Manitoba" },
+      { label: "Saskatchewan" },
+      { label: "Newfoundland & Labrador" },
+      { label: "Nova Scotia" },
+      { label: "Nunavut" },
+      { label: "Yukon" },
     ],
   },
   { label: "NEWS", href: "/news" },
   { label: "FAQ", href: "/faq" },
   {
     label: "ABOUT US",
-    submenu: ["Known Agents", "Meet Our Team", "Testimonials"],
+    submenu: [
+      { label: "Known Agents" },
+      { label: "Meet Our Team" },
+      { label: "Testimonials" },
+    ],
   },
   { label: "CONTACT US", href: "/contact" },
-] as const;
-interface HeaderProps {
-  onLoginOpen?: () => void;
-}
-export default function Header({ onLoginOpen }: HeaderProps) {
+];
+export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
-  const [lang, setLang] = useState<LangCode>("en");
+  const [loginOpen, setLoginOpen] = useState(false);
+
   const searchRef = useRef<HTMLInputElement>(null);
-  const currentLang = languages.find((l) => l.code === lang)!;
+  const loginRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (searchOpen) searchRef.current?.focus();
   }, [searchOpen]);
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (loginRef.current && !loginRef.current.contains(e.target as Node)) setLoginOpen(false);
+    };
+    if (loginOpen) document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, [loginOpen]);
+
   return (
-    <header className="w-full bg-white shadow-[0_4px_20px_1px_rgba(0,0,0,0.2)] fixed top-0 z-[25000]">
-      <div className="container flex items-center gap-4 h-[5.8em] relative max-[1088px]:justify-between">
-        <div className="flex items-center h-full">
-          <button
-            aria-label="Toggle navigation"
-            onClick={() => setMobileOpen((p) => !p)}
-            className="hidden max-[1088px]:flex items-center justify-center w-20 h-full text-[var(--color-primary)] bg-transparent border-none cursor-pointer"
-          >
+    <header className="w-full bg-white shadow-[0_4px_20px_1px_rgba(0,0,0,0.2)] fixed top-0 z-50">
+      <div className="flex items-center h-[5.8em] relative pl-8 max-[1088px]:pl-4 max-[1088px]:justify-between">
+        <div className="flex items-center h-full shrink-0 pr-4">
+          <button aria-label="Toggle navigation" onClick={() => setMobileOpen((p) => !p)} className="hidden max-[1088px]:flex items-center justify-center w-16 h-full text-primary bg-transparent border-none cursor-pointer">
             <Menu size={28} />
           </button>
-          <Link href="/">
-            <Image
-              src="https://mdccanada.ca/assets/images/Logo_colour_tagline.svg"
-              alt="MDC Canada"
-              width={160}
-              height={60}
-              priority
-              className="h-[80%] w-auto mt-2 object-contain"
-            />
-          </Link>
+          <Link href="/"><Image src="https://mdccanada.ca/assets/images/Logo_colour_tagline.svg" alt="MDC Canada" width={120} height={40} priority className="h-[80%] w-auto mt-2 object-contain" /></Link>
         </div>
         {searchOpen ? (
           <div className="flex-1 flex items-center gap-2 px-4">
-            <input
-              ref={searchRef}
-              type="text"
-              placeholder="Search..."
-              className="w-full h-10 border-b-2 border-[var(--color-primary)] outline-none bg-transparent text-[var(--color-primary)] font-[var(--font-body)] text-sm placeholder:text-gray-400"
-            />
-            <button
-              onClick={() => setSearchOpen(false)}
-              className="text-[var(--color-primary)] bg-transparent border-none cursor-pointer"
-            >
-              <X size={20} />
-            </button>
+            <input ref={searchRef} type="text" placeholder="Search..." className="w-full h-10 border-b-2 border-primary outline-none bg-transparent text-primary text-sm placeholder:text-gray-400" />
+            <button onClick={() => setSearchOpen(false)} className="text-primary bg-transparent border-none cursor-pointer"><X size={20} /></button>
           </div>
         ) : (
-          <nav className={`h-full flex-1 pr-[10px] after:content-[''] after:w-px after:h-[60%] after:bg-black after:ml-[10px] after:mt-[10px] max-[1088px]:after:hidden max-[1088px]:flex-none max-[1088px]:absolute max-[1088px]:top-full max-[1088px]:left-0 max-[1088px]:w-full max-[1088px]:h-auto max-[1088px]:bg-white max-[1088px]:shadow-[0_4px_20px_1px_rgba(0,0,0,0.2)] max-[1088px]:p-4 max-[1088px]:z-50 ${mobileOpen ? "max-[1088px]:block" : "max-[1088px]:hidden"}`}>
+          <nav className={`h-full flex-1 max-[1088px]:flex-none max-[1088px]:absolute max-[1088px]:top-full max-[1088px]:left-0 max-[1088px]:w-full max-[1088px]:h-auto max-[1088px]:bg-white max-[1088px]:shadow-[0_4px_20px_1px_rgba(0,0,0,0.2)] max-[1088px]:p-4 max-[1088px]:z-50 ${mobileOpen ? "max-[1088px]:block" : "max-[1088px]:hidden"}`}>
             <ul className="w-full h-full flex justify-between items-center list-none max-[1088px]:flex-col max-[1088px]:items-start max-[1088px]:gap-4 max-[1088px]:h-auto">
               {navItems.map((item) => (
-                <li key={item.label} className="relative group">
+                <li key={item.label} className="relative group h-full flex items-center">
                   {"href" in item ? (
-                    <Link href={item.href} className="text-[12px] font-bold text-[var(--color-primary)] no-underline font-[var(--font-body)]">
-                      {item.label}
-                    </Link>
+                    <Link href={item.href} className="text-[12px] font-bold text-primary no-underline whitespace-nowrap">{item.label}</Link>
                   ) : (
-                    <span className="flex items-center gap-1 text-[12px] font-bold text-[var(--color-primary)] font-[var(--font-body)] cursor-pointer">
+                    <span className="flex items-center gap-1 text-[12px] font-bold text-primary cursor-pointer whitespace-nowrap">
                       {item.label} <ChevronDown size={12} />
                     </span>
                   )}
-                  {item.submenu && (
-                    <div className="w-[20em] h-auto absolute mt-[10px] z-[1000] hidden group-hover:block">
-                      <ul className="w-full bg-gray-50 rounded border border-gray-400 p-[5px] overflow-hidden list-none">
-                        {item.submenu.map((sub) => (
-                          <li key={sub} className="w-full h-10 border-b border-gray-800 flex justify-center items-center">
-                            <Link href="#" className="text-[10px] text-gray-800 no-underline hover:[letter-spacing:0.8px]">
-                              {sub}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
+                  {"submenu" in item && (
+                    <div className="absolute top-full left-0 z-1000 hidden group-hover:block pt-1 min-w-65">
+                      <div className="bg-white border border-gray-200 shadow-[0_4px_20px_rgba(0,0,0,0.12)] rounded-sm overflow-hidden">
+                        <div className="bg-primary px-4 py-1.5">
+                          <span className="text-white text-[11px] font-bold tracking-wider uppercase">{item.label}</span>
+                        </div>
+                        <ul className="list-none">
+                          {item.submenu.map((sub, i) => (
+                            <li key={sub.label} className={`flex items-center justify-between px-4 py-3 hover:bg-gray-50 cursor-pointer transition-colors ${i < item.submenu.length - 1 ? "border-b border-gray-200" : ""}`}>
+                              <Link href="#" className="text-[13px] text-primary no-underline w-full">{sub.label}</Link>
+                              {sub.hasNested && <ChevronRight size={14} className="text-primary shrink-0" />}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
                   )}
                 </li>
@@ -135,59 +120,31 @@ export default function Header({ onLoginOpen }: HeaderProps) {
             </ul>
           </nav>
         )}
-        <div className="h-full flex items-center gap-2 p-[5px]">
+        <div className="flex items-center h-full border-l border-gray-300 ml-2 pl-4 gap-1 shrink-0 relative" ref={loginRef}>
           {!searchOpen && (
-            <button
-              aria-label="Search"
-              onClick={() => setSearchOpen(true)}
-              className="h-full min-w-[3em] bg-transparent border-none text-[var(--color-primary)] cursor-pointer flex items-center justify-center"
-            >
-              <Search size={24} />
+            <button onClick={() => setLoginOpen((p) => !p)} className="flex items-center gap-1 text-primary font-bold text-sm bg-transparent border-none cursor-pointer whitespace-nowrap hover:text-primary-light transition-colors">
+              Login <ChevronDown size={14} />
+            </button>)}
+          {loginOpen && <LoginForm />}
+          {!searchOpen && (
+            <button aria-label="Search" onClick={() => setSearchOpen(true)} className="w-10 h-10 bg-transparent border-none text-primary cursor-pointer flex items-center justify-center hover:text-primary-light transition-colors">
+              <Search size={22} />
             </button>
           )}
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <button
-                aria-label="Select language"
-                className="h-full min-w-[3em] bg-transparent border-none cursor-pointer flex items-center justify-center gap-1 max-[455px]:hidden"
-              >
-                <Image
-                  src={currentLang.flag}
-                  alt={currentLang.label}
-                  width={30}
-                  height={30}
-                  className="rounded-full object-cover border border-gray-400"
-                />
-                <ChevronDown size={12} className="text-[var(--color-primary)]" />
-              </button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-40">
-              {languages.map((l) => (
-                <DropdownMenuItem
-                  key={l.code}
-                  onClick={() => setLang(l.code)}
-                  className="flex items-center gap-2 cursor-pointer"
-                >
-                  <Image
-                    src={l.flag}
-                    alt={l.label}
-                    width={24}
-                    height={24}
-                    className="rounded-full object-cover border border-gray-300"
-                  />
-                  <span className="text-sm font-[var(--font-body)]">{l.label}</span>
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
-          <button
-            onClick={onLoginOpen}
-            className="w-[17em] h-full bg-[#dc3545] text-gray-100 font-bold font-mono text-[1.2em] tracking-[0.5px] flex items-center justify-center border-none cursor-pointer hover:bg-[#e93c4e] -mt-[10px] max-[655px]:w-[15em] max-[455px]:w-[8em] max-[455px]:text-[0.9em]"
-          >
-            START TODAY
+          <button aria-label="Select language" className="flex items-center bg-transparent border-none cursor-pointer max-[455px]:hidden">
+            <div className="relative w-9 h-9">
+              <Image src="/img/flag/United Kingdom.png" alt={"English language"} width={36} height={36} className="rounded-full object-cover border border-gray-300 w-9 h-9" />
+            </div>
           </button>
         </div>
+
+        <SignupDialog>
+          <button className="h-full w-[13em] bg-[#dc3545] text-white font-bold font-mono text-[1.1em] tracking-[0.5px] flex items-center justify-center border-none cursor-pointer hover:bg-[#e93c4e] shrink-0 max-[655px]:w-[10em] max-[455px]:w-[7em] max-[455px]:text-[0.85em]">
+            START TODAY
+          </button>
+        </SignupDialog>
       </div>
     </header>
   );
 }
+

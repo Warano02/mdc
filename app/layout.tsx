@@ -4,7 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import Header from "@/components/Header";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+const geist = Geist({ subsets: ['latin'], variable: '--font-sans' });
 
 const rubik = Rubik({
   subsets: ["latin"],
@@ -19,19 +19,16 @@ const playfairDisplay = Playfair_Display({
   display: "swap",
 });
 export const metadata: Metadata = {
-  title: "MDC Canada",
-  description: "MDC Canada",
+  title: "Easy Steps for Canadian Visa Applications | MDC Canada",
+  description: "Looking to work, study, or live in Canada? MDC Canada’s certified consultants simplify the visa and immigration process for you. Apply today!",
+  keywords: 'live in canada, work in canada, live in canada, study in canada'
 };
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children, }: Readonly<{ children: React.ReactNode; }>) {
   return (
     <html lang="fr" className={cn(rubik.variable, playfairDisplay.variable, "font-sans", geist.variable)}>
       <body>
         {children}
-        </body>
+      </body>
     </html>
   );
 }
