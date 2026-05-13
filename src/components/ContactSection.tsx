@@ -101,6 +101,13 @@ export default function ContactSection() {
           </div>
 
           <div>
+            <h2 className="text-[1.3em] font-bold text-primary mb-1 font-serif">WHATSAPP</h2>
+            <a href="tel:+16044491100" className="text-gray-900 font-bold hover:underline">
+              +1 604 449 1100
+            </a>
+          </div>
+
+          <div>
             <h2 className="text-[1.3em] font-bold text-primary mb-1 font-serif">EMAIL</h2>
             <a href="mailto:support@mdccanada.ca" className="text-gray-900 font-bold hover:underline">
               support@mdccanada.ca
