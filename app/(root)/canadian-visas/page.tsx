@@ -50,7 +50,7 @@ const visaItems = [
   {
     title: "Working Holiday Program",
     image: "/img/g/img_workingholiday_desktop.jpg",
-    href: "./working-holiday-visa/",
+    href: "/canadian-visas/working-holiday-visa/",
     imageLeft: true,
     text: "The Working Holiday Program is for young adults who crave new experiences in a foreign country. This program allows applicants to travel and work in Canada for up to two years. It is aimed at those who not only want to gain experience to add to their resumes but also for those who would like to eventually request permanent residence. Options include the Working Holiday, Young Professionals and International Internship Programs.",
   },

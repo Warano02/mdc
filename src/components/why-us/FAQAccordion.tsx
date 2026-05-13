@@ -7,7 +7,7 @@ interface FAQItem {
   answer: string;
 }
 
-const faqData: FAQItem[] = [
+const defaultFaqs: FAQItem[] = [
   {
     question: "What is an RCIC?",
     answer:
@@ -35,7 +35,12 @@ const faqData: FAQItem[] = [
   },
 ];
 
-export default function FAQAccordion() {
+interface FAQAccordionProps {
+  faqs?: FAQItem[];
+  showTitle?: boolean;
+}
+
+export default function FAQAccordion({ faqs = defaultFaqs, showTitle = true }: FAQAccordionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggle = (index: number) => {
@@ -44,15 +49,17 @@ export default function FAQAccordion() {
 
   return (
     <section className="w-full max-w-3xl mx-auto px-4 py-12">
-      <div className="text-center mb-10">
-        <h2 className="text-4xl font-bold text-primary font-serif italic">
-          FAQ&apos;s
-        </h2>
-        <div className="mt-3 mx-auto w-12 h-0.75 bg-red-600 rounded-full" />
-      </div>
+      {showTitle && (
+        <div className="text-center mb-10">
+          <h2 className="text-4xl font-bold text-primary font-serif italic">
+            FAQ&apos;s
+          </h2>
+          <div className="mt-3 mx-auto w-12 h-0.75 bg-red-600 rounded-full" />
+        </div>
+      )}
 
       <div className="flex flex-col divide-y divide-gray-200 border-t border-gray-200">
-        {faqData.map((item, index) => {
+        {faqs.map((item, index) => {
           const isOpen = openIndex === index;
 
           return (
