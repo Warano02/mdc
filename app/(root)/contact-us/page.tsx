@@ -1,99 +1,45 @@
-import SignupDialog from '@/components/SignupDialog'
-import React from 'react'
+import ContactSection from "@/components/ContactSection";
+import SignupDialog from "@/components/SignupDialog";
 
-function ContactUs() {
+export const metadata={
+  title:"Contact Us | MDC Canada"
+}
+export default function ContactPage() {
   return (
-    <main className='w-full h-full relative'>
-      <section className='h-[32em] w-full relative' style={{
-        background: `url(/img/bg/contact_us.jpg),
-    linear-gradient(
-      to left,
-      rgb(25, 13, 136),
-      rgba(9, 9, 243, 0.726),
-      rgb(4, 0, 255)
-    )`, backgroundPosition: "center"
-      }}>
-        <div className="w-[95%] h-full flex flex-col pl-[3em] justify-center" style={{
-          background: ` linear-gradient(
-    to left,
-    rgba(89, 121, 209, 0.123),
-    rgba(9, 19, 110, 0.904)
-  )`}}>
-          <div className="w-[41em] h-[26em] ml-[2em] relative">
-            <div className="w-full h-[12em] flex items-center pl-[2em] relative">
-              <h1 className='text-[3em]  text-white font-bold'>Contact Us</h1>
-            </div>
-            <p className='text-[1.2em] w-[80%] ml-[2em] text-white'>
+    <main className="w-full">
+      <section
+        className="w-full h-[32em] bg-cover bg-center relative"
+        style={{ backgroundImage: "url('/img/bg/contact_us.jpg')" }}
+      >
+        <div className="absolute inset-0 bg-linear-to-l from-[rgba(89,121,209,0.12)] to-[rgba(9,19,110,0.9)]" />
+
+        <div className="relative z-10 h-full flex flex-col justify-center pl-12 text-white">
+          <div className="ml-8 max-w-[41em]">
+            <h1 className="text-5xl font-bold mb-6 font-serif">Contact Us</h1>
+            <p className="text-lg font-semibold leading-relaxed w-4/5 mb-8">
               We provide the guidance and services to make your Canadian
               immigration process easy, affordable, and reliable.
             </p>
             <SignupDialog>
-              <button className='w-[12em] h-[2.5em] font-bold text-white mt-[2em] ml-[2em] border border-white cursor-pointer transition-all hover:bg-white hover:text-primary'>GET STARTED</button>
+              <button className="w-[15em] h-[3em] font-bold border-2 border-white text-white bg-transparent hover:bg-white hover:text-primary transition-colors duration-500 cursor-pointer">
+                GET STARTED
+              </button>
             </SignupDialog>
           </div>
         </div>
       </section>
-
-      <section className='h-[55em] flex gap-[2em] relative justify-center items-center'>
-        <div className="w-[22em] h-[95%] ml-[1em] relative">
-          <h1 className='mt-[1em] text-3xl text-primary mb-[1em]'>Regulated Canadian Immigration Consultants</h1>
-          <div className="w-full relative space-y-[1em]">
-            <div className="w-[95%]">
-              <h2  className='text-[1.3em] text-primary'>ADDRESS</h2>
-              <p className='text-[rgb(59, 58, 58)]'>
-                700 W Pender St, Vancouver,<br />
-                BC V6C 1GB <br />
-                Canada
-              </p>
-            </div>
-            <div className="w-[95%]">
-              <h2>PHONE</h2>
-              <a href="#" title="number of phone">+1 604 449 1100</a>
-            </div>
-            <div className="w-[95%]">
-              <h2>EMAIL</h2>
-              <a href="#" title="EMAIL">support@mdccanada.ca</a>
-            </div>
-            <div className="w-[95%] i">
-              <span title="Facebook"><i className="bx bxl-facebook"></i></span>
-              <span title="Instagram"><i className="bx bxl-instagram"></i></span>
-              <span title="LinkedIn"><i className="bx bxl-linkedin"></i></span>
-              <span title="Youtube"><i className="bx bxl-youtube"></i></span>
-            </div>
-          </div>
-        </div>
-        <div className="w-[55em] h-[95%] relative ">
-          <h3 className='text-2xl mt-[2em] ml-[1em] text-primary '>Leave a message</h3>
-          <form className='w-[90%] h-full space-y-[1em] ml-[1.5em] mt-[1em]'>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Name"
-              className='w-[98%] h-[2.5em] pl-[1em]'
-              required
-            />
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Email"
-              className='w-[98%] h-[2.5em] pl-[1em]'
-              required
-            />
-            <textarea
-              name="message"
-              id="message"
-              placeholder="Message..."
-              required
-            ></textarea>
-            <button type="submit">SEND</button>
-          </form>
-        </div>
+      <ContactSection />
+      <section className="w-full h-[32em] mt-4">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5205.208258025486!2d-123.11723!3d49.283898!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54867183b80a09fd%3A0xc1575ebdbf074410!2sMDC%20Canada%20-%20Visa%20Applications%20and%20Immigration%20Services!5e0!3m2!1sen!2scm!4v1730555304932!5m2!1sen!2scm"
+          width="100%"
+          height="100%"
+          style={{ border: 0 }}
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        />
       </section>
-
     </main>
-  )
+  );
 }
-
-export default ContactUs
