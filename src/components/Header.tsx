@@ -5,51 +5,52 @@ import Link from "next/link";
 import { Menu, Search, ChevronDown, ChevronRight, X } from "lucide-react";
 import SignupDialog from "@/components/SignupDialog";
 import LoginForm from "./LoginForm";
-type SubItem = { label: string; hasNested?: boolean };
-type NavItem =
-  | { label: string; href: string }
-  | { label: string; submenu: SubItem[] };
+type SubItem = { label: string; hasNested?: boolean, href: string };
+type NavItem = { label: string; submenu?: SubItem[], href: string };
 
 const navItems: NavItem[] = [
   {
     label: "CANADIAN VISAS",
+    href: "/canadian-visas",
     submenu: [
-      { label: "Express Entry System" },
-      { label: "Tourist Visa" },
-      { label: "Working Holiday Visa" },
-      { label: "Student Visa" },
-      { label: "Start-up Visa Program" },
-      { label: "Business Immigration Programs" },
-      { label: "Provincial Nominee Program", hasNested: true },
-      { label: "Family Sponsorship Visa" },
-      { label: "Pilot Programs", hasNested: true },
+      { label: "Express Entry System", href: "/canadian-visas/express-entry-system" },
+      { label: "Tourist Visa", href: "/canadian-visas/tourist-visa" },
+      { label: "Working Holiday Visa", href: "/canadian-visas/working-holiday-visa" },
+      { label: "Student Visa", href: "/canadian-visas/student-visa" },
+      { label: "Start-up Visa Program", href: "/canadian-visas/start-up-visa-program" },
+      { label: "Business Immigration Programs", href: "/canadian-visas/business-immigration-programs" },
+      { label: "Provincial Nominee Program", hasNested: true, href: "/canadian-visas/provincial-nominee-program" },
+      { label: "Family Sponsorship Visa", href: "/canadian-visas/family-sponsorship-visa" },
+      { label: "Pilot Programs", hasNested: true, href: "/canadian-visas/pilot-programs" },
     ],
   },
   { label: "WHY USE AN RCIC?", href: "/why-use-an-rcic" },
   {
     label: "ABOUT CANADA",
+    href: "/about-canada",
     submenu: [
-      { label: "British Columbia" },
-      { label: "Alberta" },
-      { label: "Ontario" },
-      { label: "Quebec" },
-      { label: "New Brunswick" },
-      { label: "Manitoba" },
-      { label: "Saskatchewan" },
-      { label: "Newfoundland & Labrador" },
-      { label: "Nova Scotia" },
-      { label: "Nunavut" },
-      { label: "Yukon" },
+      { label: "British Columbia", href: "/about-canada/british-columbia" },
+      { label: "Alberta", href: "/about-canada/alberta" },
+      { label: "Ontario", href: "/about-canada/ontario" },
+      { label: "Quebec", href: "/about-canada/quebec" },
+      { label: "New Brunswick", href: "/about-canada/new-brunswick" },
+      { label: "Manitoba", href: "/about-canada/manitoba" },
+      { label: "Saskatchewan", href: "/about-canada/saskatchewan" },
+      { label: "Newfoundland & Labrador", href: "/about-canada/newfoundland-and-labrador" },
+      { label: "Nova Scotia", href: "/about-canada/nova-scotia" },
+      { label: "Nunavut", href: "/about-canada/nunavut" },
+      { label: "Yukon", href: "/about-canada/yukon" },
     ],
   },
   { label: "NEWS", href: "/news" },
   { label: "FAQ", href: "/faq" },
   {
     label: "ABOUT US",
+    href: "/about-us",
     submenu: [
-      { label: "Known Agents" },
-      { label: "Meet Our Team" },
-      { label: "Testimonials" },
+      { label: "Known Agents", href: "/about-us/known-agents" },
+      { label: "Meet Our Team", href: "/about-us/meet-our-team" },
+      { label: "Testimonials", href: "/about-us/testimonials" },
     ],
   },
   { label: "CONTACT US", href: "/contact" },
@@ -91,14 +92,17 @@ export default function Header() {
             <ul className="w-full h-full flex justify-between items-center list-none max-[1088px]:flex-col max-[1088px]:items-start max-[1088px]:gap-4 max-[1088px]:h-auto">
               {navItems.map((item) => (
                 <li key={item.label} className="relative group h-full flex items-center">
-                  {"href" in item ? (
-                    <Link href={item.href} className="text-[12px] font-bold text-primary no-underline whitespace-nowrap">{item.label}</Link>
-                  ) : (
-                    <span className="flex items-center gap-1 text-[12px] font-bold text-primary cursor-pointer whitespace-nowrap">
-                      {item.label} <ChevronDown size={12} />
-                    </span>
-                  )}
-                  {"submenu" in item && (
+
+                  <Link href={item.href} className="text-[12px] font-bold text-primary no-underline whitespace-nowrap flex items-center gap-1">
+                    {item.label}
+                    {item.submenu && (
+                      <span className="flex items-center gap-1 text-[12px] font-bold text-primary cursor-pointer whitespace-nowrap">
+                        <ChevronDown size={12} />
+                      </span>
+                    )}
+                  </Link>
+
+                  {item.submenu && (
                     <div className="absolute top-full left-0 z-1000 hidden group-hover:block pt-1 min-w-65">
                       <div className="bg-white border border-gray-200 shadow-[0_4px_20px_rgba(0,0,0,0.12)] rounded-sm overflow-hidden">
                         <div className="bg-primary px-4 py-1.5">
@@ -106,8 +110,10 @@ export default function Header() {
                         </div>
                         <ul className="list-none">
                           {item.submenu.map((sub, i) => (
-                            <li key={sub.label} className={`flex items-center justify-between px-4 py-3 hover:bg-gray-50 cursor-pointer transition-colors ${i < item.submenu.length - 1 ? "border-b border-gray-200" : ""}`}>
-                              <Link href="#" className="text-[13px] text-primary no-underline w-full">{sub.label}</Link>
+                            <li key={sub.label} className={`flex items-center justify-between px-4 py-3 hover:bg-gray-50 cursor-pointer transition-colors ${i < (item?.submenu?.length || 1) - 1 ? "border-b border-gray-200" : ""}`}>
+                              <Link href={sub.href} className="text-[13px] text-primary no-underline w-full">
+                                {sub.label}
+                              </Link>
                               {sub.hasNested && <ChevronRight size={14} className="text-primary shrink-0" />}
                             </li>
                           ))}

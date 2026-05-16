@@ -6,7 +6,7 @@ function layout({ children }: Readonly<{children: React.ReactNode;}>) {
     return (
         <>
             <Header />
-            <div className='pt-26'>
+            <div className='pt-23.5'>
                 {children}
             </div>
             <Footer/>

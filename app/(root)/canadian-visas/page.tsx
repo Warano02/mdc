@@ -8,7 +8,7 @@ const visaItems = [
   {
     title: "Express Entry",
     image: "/img/g/img_expressEntry_desktop.jpg",
-    href: "#",
+    href: "/canadian-visas/express-entry-system",
     imageLeft: true,
     text: "The Express Entry System allows skilled foreign workers to request permanent residency in Canada. It manages the Federal Skilled Worker Program, Skilled Trades Program and Canadian Experience Class. Once you have created an online profile, you will be scored according to the Comprehensive Ranking System (CRS) and ranked against other candidates. The Express Entry System is designed to fast-track the entire process and if successful, you will be able to relocate in as little as six months!",
   },
@@ -67,7 +67,7 @@ export default function VisasPage() {
   return (
     <main className="w-full">
       <section
-        className="w-full h-[32em] bg-cover bg-center bg-no-repeat relative"
+        className="w-full h-[36em] bg-cover bg-center bg-no-repeat relative"
         style={{ backgroundImage: "url('/img/bg/canadian_visa.jpg')" }}
       >
         <div className="absolute inset-0 bg-linear-to-l from-[rgba(20,4,92,0.23)] to-[rgba(3,8,59,0.57)]" />
