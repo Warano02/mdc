@@ -53,7 +53,7 @@ const navItems: NavItem[] = [
       { label: "Testimonials", href: "/about-us/testimonials" },
     ],
   },
-  { label: "CONTACT US", href: "/contact" },
+  { label: "CONTACT US", href: "/contact-us" },
 ];
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
