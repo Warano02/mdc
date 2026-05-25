@@ -8,19 +8,18 @@ const siteMap = [
     { label: "FAQ", href: "/faq" },
     { label: "Privacy Policy", href: "#" },
     { label: "Terms of Use", href: "/terms-of-use" },
-    { label: "Contact Us", href: "/contact" },
+    { label: "Contact Us", href: "/contact-us" },
     { label: "Sitemap", href: "#" },
 ];
 const visaPrograms = [
     { label: "Canadian Visas", href: "/canadian-visas" },
     { label: "Working Holiday Visa", href: "/canadian-visas/working-holiday-visa" },
-    { label: "Tourist Visa", href: "#" },
-    { label: "Student Visa", href: "#" },
-    { label: "Start-up Visa Program", href: "#" },
-    { label: "Business Immigration Programs", href: "#" },
-    { label: "Provincial Nominee Program", href: "#" },
-    { label: "Family Sponsorship Visa", href: "#" },
-    { label: "Express Entry System", href: "#" },
+    { label: "Tourist Visa", href: "/canadian-visas/tourist-visa" },
+    { label: "Student Visa", href: "/canadian-visas/student-visa" },
+    { label: "Start-up Visa Program", href: "/canadian-visas/start-up-visa-program" },
+    { label: "Business Immigration Programs", href: "/canadian-visas/business-immigration-programs" },
+    { label: "Family Sponsorship Visa", href: "/canadian-visas/family-sponsorship-visa" },
+    { label: "Express Entry System", href: "/canadian-visas/express-entry-system" },
 ];
 const socials = [
     {

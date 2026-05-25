@@ -135,11 +135,7 @@ export default function Header() {
               <Search size={22} />
             </button>
           )}
-          <button aria-label="Select language" className="flex items-center bg-transparent border-none cursor-pointer max-[455px]:hidden">
-            <div className="relative w-9 h-9">
-              <Image src="/img/flag/United Kingdom.png" alt={"English language"} width={36} height={36} className="rounded-full object-cover border border-gray-300 w-9 h-9" />
-            </div>
-          </button>
+        
         </div>
 
         <SignupDialog>
