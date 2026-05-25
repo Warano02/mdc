@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Menu, Search, ChevronDown, ChevronRight, X } from "lucide-react";
 import SignupDialog from "@/components/SignupDialog";
 import LoginForm from "./LoginForm";
-type SubItem = { label: string; hasNested?: boolean, href: string };
+type SubItem = { label: string; hasNested?: boolean, href: string, highlight?: boolean };
 type NavItem = { label: string; submenu?: SubItem[], href: string };
 
 const navItems: NavItem[] = [
@@ -16,7 +16,7 @@ const navItems: NavItem[] = [
       { label: "Express Entry System", href: "/canadian-visas/express-entry-system" },
       { label: "Tourist Visa", href: "/canadian-visas/tourist-visa" },
       { label: "Working Holiday Visa", href: "/canadian-visas/working-holiday-visa" },
-      { label: "Student Visa", href: "/canadian-visas/student-visa" },
+      { label: "Student Visa", href: "/canadian-visas/student-visa", highlight: true },
       { label: "Start-up Visa Program", href: "/canadian-visas/start-up-visa-program" },
       { label: "Business Immigration Programs", href: "/canadian-visas/business-immigration-programs" },
       { label: "Family Sponsorship Visa", href: "/canadian-visas/family-sponsorship-visa" },
@@ -113,6 +113,7 @@ export default function Header() {
                                 {sub.label}
                               </Link>
                               {sub.hasNested && <ChevronRight size={14} className="text-primary shrink-0" />}
+                              {sub.highlight && <span className="px-2 py-0.2 rounded-lg bg-green-500 text-xs border border-primary">New</span> }
                             </li>
                           ))}
                         </ul>
@@ -135,7 +136,7 @@ export default function Header() {
               <Search size={22} />
             </button>
           )}
-        
+
         </div>
 
         <SignupDialog>
