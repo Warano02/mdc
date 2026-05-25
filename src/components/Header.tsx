@@ -46,7 +46,7 @@ const navItems: NavItem[] = [
     label: "ABOUT US",
     href: "/about-us",
     submenu: [
-      { label: "Known Agents", href: "/about-us/known-agents" },
+      { label: "Known Agents", href: "/known-agents" },
       { label: "Meet Our Team", href: "/about-us/meet-our-team" },
       { label: "Testimonials", href: "/about-us/testimonials" },
     ],
