@@ -7,6 +7,10 @@ images: {
         protocol: 'https',
         hostname: 'mdccanada.ca',
       },
+      {
+        protocol: 'https',
+        hostname: 'dwyeyw425tqez.cloudfront.net',
+      },
     ],
   },
 };
