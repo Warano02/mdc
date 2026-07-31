@@ -2,8 +2,8 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import SignupDialog from "@/components/SignupDialog";
 import ContactSection from "@/components/ContactSection";
-import TestimonialsCarousel from "@/components/TestimonialsCarousel";
 import OurService from "@/components/home/OurService";
+import TestimonySection from "@/components/home/TestimonySection";
 
 export const metadata: Metadata = {
   title: "RCIC - Immigration Consultants | MDC Canada",
@@ -38,27 +38,6 @@ const whatWeDo = [
   "We offer you and your family a personal evaluation service tailored to your specific needs. Our RCICs ensure that IRCC Canada requirements are met.",
   "Our Regulated Canadian Immigration Consultants (RCICs) are all registered with the College of Immigration and Citizenship Consultants (CICC).",
   "We offer in-depth consultation services that may give you the best chance of achieving your Canadian immigration goal. You can even sign up for our IELTS course to improve your language skills.",
-];
-
-const testimonials = [
-  {
-    video: "/img/testimonials/mdc_katerin.mp4.mp4",
-    poster: "/img/Screenshot_20241009-150606.png",
-    name: "Katherine",
-    text: "has successfully immigrated to Canada from UK through the Express Entry System with the help of Giovanni, our RCICs.",
-  },
-  {
-    video: "/img/testimonials/mdc_solange.mp4",
-    poster: "/img/Screenshot_20241009-150606.png",
-    name: "Solange Diamond",
-    text: "immigrated to Canada from the Ivory Coast with the assistance and support of our professional RCICs. She managed to receive her study visa and is thrilled to be a part of Canadian society.",
-  },
-  {
-    video: "/img/testimonials/mdc_ela.mp4",
-    poster: "/img/Screenshot_20241009-150606.png",
-    name: "Ela Doria",
-    text: "came to Canada from Mexico on a study visa and also managed to apply for a work permit order to earn an income in her new city, to support herself and her family who also managed to secure work permits. Our professional RCICs were with her every step of the way and ensured she understood the entire process and had the right documents on hand to avoid delays.",
-  },
 ];
 
 const story = [
@@ -146,6 +125,7 @@ export default function HomePage() {
         </div>
       </section>
       <OurService />
+      <TestimonySection/>
       <section className="w-full flex flex-col items-center py-16 px-4">
         <h2 className="text-3xl text-primary font-serif text-center mb-12">
           What to expect in 4 simple steps
@@ -185,15 +165,7 @@ export default function HomePage() {
         </SignupDialog>
       </section>
 
-      <section className="w-full flex justify-center py-16 px-4">
-        <div className="w-full max-w-6xl flex gap-16 max-[900px]:flex-col max-[900px]:items-center">
-          <div className="shrink-0 max-[900px]:text-center">
-            <h2 className="text-sm tracking-widest text-red-600 font-bold mb-2">TESTIMONIALS</h2>
-            <h3 className="text-3xl text-primary font-serif">Meet Our Happy Clients</h3>
-          </div>
-          <TestimonialsCarousel testimonials={testimonials} />
-        </div>
-      </section>
+      
 
       <section
         className="w-full bg-cover bg-center relative py-16"

@@ -107,6 +107,19 @@ body {
     font-weight: var(--font-weight-bold);
     color: var(--color-primary);
   }
+  .testimony-scrollbar {
+    scrollbar-width: thin;
+  }
+}
+.play-btn {
+  width: 0;
+  height: 0;
+  border-color: transparent transparent transparent #fff;
+  border-style: solid;
+  border-width: 8.5px 0 8.5px 16px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 
 p {
@@ -115,7 +128,6 @@ p {
 a {
   text-decoration: none;
 }
-
 
 @theme inline {
   --font-heading: var(--font-sans);
@@ -193,7 +205,6 @@ a {
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
 }
-
 
 .container {
   @apply w-full max-w-7xl mx-auto px-8 max-[1088px]:px-6 max-[560px]:px-4;
