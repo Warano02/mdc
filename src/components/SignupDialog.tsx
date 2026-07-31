@@ -1,8 +1,10 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
+import axiosInstance from "@/lib/axios";
 interface Country {
   name: { common: string };
   cca2: string;
@@ -33,12 +35,15 @@ interface SignupDialogProps {
   children: React.ReactNode;
 }
 export default function SignupDialog({ children }: SignupDialogProps) {
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const [countries, setCountries] = useState<PhoneCountry[]>([]);
   const [selectedCountry, setSelectedCountry] = useState<PhoneCountry | null>(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [search, setSearch] = useState("");
   const [form, setForm] = useState<FormState>({ name: "", email: "", birthYear: "", englishLevel: "", phone: "" });
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const currentYear = new Date().getFullYear();
@@ -70,7 +75,19 @@ export default function SignupDialog({ children }: SignupDialogProps) {
   }, [dropdownOpen]);
   const filtered = countries.filter((c) => c.name.toLowerCase().includes(search.toLowerCase()) || c.code.includes(search));
   const set = (field: keyof FormState) => (e: React.ChangeEvent<HTMLInputElement>) => setForm((p) => ({ ...p, [field]: e.target.value }));
-  const handleSubmit = () => console.log({ ...form, phoneCode: selectedCountry?.code });
+  const handleSubmit = async () => {
+    setSubmitting(true);
+    setError("");
+    try {
+      await axiosInstance.post("/leads", { ...form, phoneCode: selectedCountry?.code });
+      setOpen(false);
+      router.push("/thank-you");
+    } catch {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>{children}</DialogTrigger>
@@ -117,8 +134,9 @@ export default function SignupDialog({ children }: SignupDialogProps) {
             )}
             <input type="tel" placeholder={selectedCountry?.placeholder ?? "XXXXXXXXX"} value={form.phone} onChange={set("phone")} className="flex-1 h-full px-3 text-sm outline-none bg-transparent" />
           </div>
-          <button onClick={handleSubmit} className="w-full h-11 bg-[#dc3545] hover:bg-[#c82333] text-white font-bold text-sm tracking-widest uppercase border-none cursor-pointer rounded transition-colors mt-1">
-            Submit Your Details
+          {error && <p className="text-red-500 text-xs text-center">{error}</p>}
+          <button onClick={handleSubmit} disabled={submitting} className="w-full h-11 bg-[#dc3545] hover:bg-[#c82333] text-white font-bold text-sm tracking-widest uppercase border-none cursor-pointer rounded transition-colors mt-1 disabled:opacity-60 disabled:cursor-not-allowed">
+            {submitting ? "Submitting..." : "Submit Your Details"}
           </button>
         </div>
         <p className="text-gray-500 text-xs text-center mt-3 leading-5">MDC is a private Canadian Immigration company and is not affiliated with the Canadian Government.</p>

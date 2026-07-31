@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import axiosInstance from "@/lib/axios";
 
 const socialLinks = [
   {
@@ -61,13 +62,7 @@ export default function ContactSection() {
     setFormState("loading");
 
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      if (!res.ok) throw new Error();
+      await axiosInstance.post("/contact", formData);
 
       setFormState("success");
       setFormData({ name: "", email: "", message: "" });
