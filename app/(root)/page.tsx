@@ -63,7 +63,7 @@ export default function HomePage() {
   return (
     <main className="w-full relative">
       <section className="w-full h-auto  bg-[url('/img/home_1.webp'),linear-gradient(to_left,rgb(255,255,255),rgb(40,49,124))] bg-cover bg-no-repeat relative ">
-        <div className="w-full h-128.5 flex flex-col justify-center items-center bg-[linear-gradient(to_left,rgba(255, 255, 255, 0.47),rgba(3,13,100,0.59))] bg-auto bg-no-repeat">
+        <div className="w-full h-128.5 flex flex-col justify-center items-center bg-[linear-gradient(to_left,rgba(255, 255, 255, 0.47),rgba(3,13,100,0.59))] bg-auto bg-no-repeat container">
           <h1 className="text-[3.5em] text-white font-(--font-heading) w-7xl:text-2xl">Your journey to Canada starts here</h1>
           <br />
           <h3 className="text-white text-xl max-w-[28em]">
@@ -89,43 +89,45 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="w-full h-32.5 bg-primary flex items-center justify-center gap-4 relative">
-          <div className="w-60 h-20.5 relative flex items-center gap-2">
-            <span className="relative w-14.5 h-11.5">
-              <Image src={"/img/icon/certified.png"} fill className="object-cover" alt="certified icon" />
-            </span>
-            <span className="relative text-white  font-semibold">
-              Certified Immigration Consultants
-            </span>
-          </div>
-          <div className="w-60 h-20.5 relative flex items-center gap-2">
-            <span className="relative  w-13.5 h-11.5">
-              <Image src={"/img/icon/experience.png"} fill className="object-cover" alt="certified icon" />
-            </span>
-            <span className="relative text-white  font-semibold">
-              Years of Experience
-            </span>
-          </div>
-          <div className="w-60 h-20.5 relative flex items-center gap-2">
-            <span className="relative  w-13.5 h-11.5">
-              <Image src={"/img/icon/Applications.png"} fill className="object-cover" alt="certified icon" />
-            </span>
-            <span className="relative text-white font-semibold">
-              1000s of Satisfied Clients
-            </span>
-          </div>
-          <div className="w-60 h-20.5 relative flex items-center gap-2">
-            <span className="relative  w-13.5 h-11.5">
-              <Image src={"/img/icon/Guidance.png"} fill className="object-cover" alt="certified icon" />
-            </span>
-            <span className="relative text-white  font-semibold">
-              24/7 Support and Guidance
-            </span>
+        <div className="w-full h-32.5 bg-primary ">
+          <div className="container w-full h-full flex items-center justify-center gap-4 relative ">
+            <div className="w-60 h-20.5 relative flex items-center gap-2">
+              <span className="relative w-14.5 h-11.5">
+                <Image src={"/img/icon/certified.png"} fill className="object-cover" alt="certified icon" />
+              </span>
+              <span className="relative text-white  font-semibold">
+                Certified Immigration Consultants
+              </span>
+            </div>
+            <div className="w-60 h-20.5 relative flex items-center gap-2">
+              <span className="relative  w-13.5 h-11.5">
+                <Image src={"/img/icon/experience.png"} fill className="object-cover" alt="certified icon" />
+              </span>
+              <span className="relative text-white  font-semibold">
+                Years of Experience
+              </span>
+            </div>
+            <div className="w-60 h-20.5 relative flex items-center gap-2">
+              <span className="relative  w-13.5 h-11.5">
+                <Image src={"/img/icon/Applications.png"} fill className="object-cover" alt="certified icon" />
+              </span>
+              <span className="relative text-white font-semibold">
+                1000s of Satisfied Clients
+              </span>
+            </div>
+            <div className="w-60 h-20.5 relative flex items-center gap-2">
+              <span className="relative  w-13.5 h-11.5">
+                <Image src={"/img/icon/Guidance.png"} fill className="object-cover" alt="certified icon" />
+              </span>
+              <span className="relative text-white  font-semibold">
+                24/7 Support and Guidance
+              </span>
+            </div>
           </div>
         </div>
       </section>
       <OurService />
-      <TestimonySection/>
+      <TestimonySection />
       <section className="w-full flex flex-col items-center py-16 px-4">
         <h2 className="text-3xl text-primary font-serif text-center mb-12">
           What to expect in 4 simple steps
@@ -165,7 +167,7 @@ export default function HomePage() {
         </SignupDialog>
       </section>
 
-      
+
 
       <section
         className="w-full bg-cover bg-center relative py-16"

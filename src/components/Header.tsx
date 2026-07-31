@@ -73,7 +73,7 @@ export default function Header() {
 
   return (
     <header className="w-full bg-white shadow-[0_4px_20px_1px_rgba(0,0,0,0.2)] fixed top-0 z-50">
-      <div className="flex items-center h-[5.8em] relative pl-8 max-[1088px]:pl-4 max-[1088px]:justify-between">
+      <div className="container flex items-center h-[5.8em] relative pl-8 max-[1088px]:pl-4 max-[1088px]:justify-between">
         <div className="flex items-center h-full shrink-0 pr-4">
           <button aria-label="Toggle navigation" onClick={() => setMobileOpen((p) => !p)} className="hidden max-[1088px]:flex items-center justify-center w-16 h-full text-primary bg-transparent border-none cursor-pointer">
             <Menu size={28} />

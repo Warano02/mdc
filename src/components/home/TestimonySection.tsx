@@ -2,8 +2,8 @@ import Testimonial from "../Testimonial"
 
 function TestimonySection() {
     return (
-        <section className="border-y-2 border-y-primary relative">
-            <div className="max-w-7xl px-6 h-132.5 flex justify-between py-6">
+        <section className="border-y-2 border-y-primary relative ">
+            <div className="container h-132.5 flex justify-between py-6">
                 <div className="flex-1 shrink-0 px-4 space-y-12">
                     <div className="relative space-y-6">
                         <h1 className="text-4xl max-w-2/3 ">

@@ -2,7 +2,7 @@ import Image from "next/image"
 
 function OurService() {
     return (
-        <section className="my-12 max-w-7xl px-6">
+        <section className="my-12 container">
             <div className="flex flex-col justify-center items-center space-y-6">
                 <h1 className="text-2xl md:text-5xl text-center ">Our Services</h1>
                 <span className="h-0.5 w-20 bg-red-500 relative" />

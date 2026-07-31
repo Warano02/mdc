@@ -93,9 +93,11 @@ export default function Footer() {
                     </p>
                 </div>
             </div>
-            <div className="w-full min-h-[5em] bg-black flex justify-around items-center px-8 gap-4 max-[505px]:flex-col max-[505px]:py-4">
-                <Image src="https://dwyeyw425tqez.cloudfront.net/production/mdccanada-v2/browser/assets/images/Logo_white.svg" alt="Logo MDC" width={100} height={36} className="object-contain shrink-0" />
-                <p className="text-white text-sm text-center">MdcCanada.ca｜700 W Pender St, Vancouver, BC V6C 1G8, Canada © Copyright {new Date().getFullYear()} MdcCanada.ca. All Rights Reserved</p>
+            <div className=" w-full relative h-[5em] bg-black ">
+                <div className="container w-full h-full flex justify-around items-center px-4 gap-4 ">
+                    <Image src="https://dwyeyw425tqez.cloudfront.net/production/mdccanada-v2/browser/assets/images/Logo_white.svg" alt="Logo MDC" width={100} height={36} className="object-contain shrink-0" />
+                    <p className="text-white text-sm text-center">MdcCanada.ca｜700 W Pender St, Vancouver, BC V6C 1G8, Canada © Copyright {new Date().getFullYear()} MdcCanada.ca. All Rights Reserved</p>
+                </div>
             </div>
         </footer>
     );
