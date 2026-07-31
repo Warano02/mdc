@@ -12,7 +12,7 @@ type CanadaStatsSidebarProps = {
 
 export default function CanadaStatsSidebar({ stats }: CanadaStatsSidebarProps) {
   return (
-    <aside className="w-[260px] shrink-0 bg-gray-50 max-md:w-full max-md:pt-6">
+    <aside className="w-65 shrink-0 bg-gray-50 max-md:w-full max-md:pt-6">
       <div className="w-full h-2 bg-primary mb-2" />
       <div className="flex flex-col divide-y divide-gray-200">
         {stats.map((stat) => (

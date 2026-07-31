@@ -3,9 +3,10 @@ import type { Metadata } from "next";
 import SignupDialog from "@/components/SignupDialog";
 import ContactSection from "@/components/ContactSection";
 import TestimonialsCarousel from "@/components/TestimonialsCarousel";
+import OurService from "@/components/home/OurService";
 
 export const metadata: Metadata = {
-  title: "Canadian Visa Applications Made Easy | MDC Canada",
+  title: "RCIC - Immigration Consultants | MDC Canada",
   description: "Looking to work, study, or live in Canada? MDC Canada's certified consultants simplify the visa and immigration process for you. Apply today!",
 };
 
@@ -81,26 +82,70 @@ const story = [
 
 export default function HomePage() {
   return (
-    <main className="w-full">
-      <section
-        className="w-full min-h-[36em] bg-cover bg-center bg-no-repeat relative"
-        style={{ backgroundImage: "url('/img/home_1.webp')" }}
-      >
-        <div className="absolute inset-0 bg-linear-to-r from-[rgba(3,8,59,0.72)] to-[rgba(20,4,92,0.55)]" />
-        <div className="relative z-10 h-full flex flex-col justify-center py-16">
-          <div className="ml-12 max-w-[38em] text-white max-md:ml-0 max-md:px-6">
-            <h1 className="text-4xl font-serif leading-tight mb-6">
-              Consult With Immigration Professionals, Check Your Eligibility for Immigration to Canada Today!
-            </h1>
-            <SignupDialog>
-              <button className="border border-white text-white px-8 py-3 w-fit tracking-widest text-sm font-semibold hover:bg-white hover:text-primary transition-colors cursor-pointer">
-                DISCOVER YOUR ELIGIBILITY
-              </button>
-            </SignupDialog>
+    <main className="w-full relative">
+      <section className="w-full h-auto  bg-[url('/img/home_1.webp'),linear-gradient(to_left,rgb(255,255,255),rgb(40,49,124))] bg-cover bg-no-repeat relative ">
+        <div className="w-full h-128.5 flex flex-col justify-center items-center bg-[linear-gradient(to_left,rgba(255, 255, 255, 0.47),rgba(3,13,100,0.59))] bg-auto bg-no-repeat">
+          <h1 className="text-[3.5em] text-white font-(--font-heading) w-7xl:text-2xl">Your journey to Canada starts here</h1>
+          <br />
+          <h3 className="text-white text-xl max-w-[28em]">
+            We provide the guidance and services to make your Canadian immigration process easy, affordable, and reliable.
+          </h3>
+          <br />
+          <SignupDialog>
+            <button className="w-42.5 h-10.5 font-bold text-white bg-transparent border-2 border-white cursor-pointer transition-all duration-300 hover:bg-white hover:text-primary">
+              GET STARTED
+            </button>
+          </SignupDialog>
+
+          <div className="flex gap-2 mt-6">
+            <div className="w-50 h-16.5 rounded-lg relative">
+              <Image src={"/cvr-review.png"} alt="cvr review" fill className="object-fit" />
+            </div>
+            <div className="w-50 h-16.5 rounded-lg relative">
+              <Image src={"/google-review.png"} alt="cvr review" fill className="object-fit" />
+            </div>
+            <div className="w-50 h-16.5 rounded-lg relative">
+              <Image src={"/tp-review.png"} alt="cvr review" fill className="object-fit" />
+            </div>
+          </div>
+        </div>
+
+        <div className="w-full h-32.5 bg-primary flex items-center justify-center gap-4 relative">
+          <div className="w-60 h-20.5 relative flex items-center gap-2">
+            <span className="relative w-14.5 h-11.5">
+              <Image src={"/img/icon/certified.png"} fill className="object-cover" alt="certified icon" />
+            </span>
+            <span className="relative text-white  font-semibold">
+              Certified Immigration Consultants
+            </span>
+          </div>
+          <div className="w-60 h-20.5 relative flex items-center gap-2">
+            <span className="relative  w-13.5 h-11.5">
+              <Image src={"/img/icon/experience.png"} fill className="object-cover" alt="certified icon" />
+            </span>
+            <span className="relative text-white  font-semibold">
+              Years of Experience
+            </span>
+          </div>
+          <div className="w-60 h-20.5 relative flex items-center gap-2">
+            <span className="relative  w-13.5 h-11.5">
+              <Image src={"/img/icon/Applications.png"} fill className="object-cover" alt="certified icon" />
+            </span>
+            <span className="relative text-white font-semibold">
+              1000s of Satisfied Clients
+            </span>
+          </div>
+          <div className="w-60 h-20.5 relative flex items-center gap-2">
+            <span className="relative  w-13.5 h-11.5">
+              <Image src={"/img/icon/Guidance.png"} fill className="object-cover" alt="certified icon" />
+            </span>
+            <span className="relative text-white  font-semibold">
+              24/7 Support and Guidance
+            </span>
           </div>
         </div>
       </section>
-
+      <OurService />
       <section className="w-full flex flex-col items-center py-16 px-4">
         <h2 className="text-3xl text-primary font-serif text-center mb-12">
           What to expect in 4 simple steps
