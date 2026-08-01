@@ -1,20 +1,16 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
+import axios from "axios";
 import axiosInstance from "@/lib/axios";
-interface Country {
-  name: { common: string };
-  cca2: string;
-  idd: { root: string; suffixes: string[] };
-  flag: string;
-  nationalNumberLengths?: number[];
-}
+import { countries as countryData } from "@/data/countries";
 interface PhoneCountry {
   code: string;
   name: string;
+  nationality: string;
   flag: string;
   cca2: string;
   placeholder: string;
@@ -37,8 +33,21 @@ interface SignupDialogProps {
 export default function SignupDialog({ children }: SignupDialogProps) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
-  const [countries, setCountries] = useState<PhoneCountry[]>([]);
-  const [selectedCountry, setSelectedCountry] = useState<PhoneCountry | null>(null);
+  const countries = useMemo<PhoneCountry[]>(
+    () =>
+      countryData.map((c) => ({
+        code: c.code,
+        name: c.name,
+        nationality: c.nationality,
+        flag: c.flag,
+        cca2: c.cca2,
+        placeholder: buildPlaceholder(c.code),
+      })),
+    []
+  );
+  const [selectedCountry, setSelectedCountry] = useState<PhoneCountry | null>(
+    () => countries.find((c) => c.code === "+237") ?? countries[0] ?? null
+  );
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [search, setSearch] = useState("");
   const [form, setForm] = useState<FormState>({ name: "", email: "", birthYear: "", englishLevel: "", phone: "" });
@@ -49,23 +58,6 @@ export default function SignupDialog({ children }: SignupDialogProps) {
   const currentYear = new Date().getFullYear();
   const years = Array.from({ length: currentYear - 1958 }, (_, i) => String(currentYear - i));
 
-  useEffect(() => {
-    if (!open || countries.length) return;
-    fetch("https://restcountries.com/v3.1/all?fields=name,cca2,idd,flag")
-      .then((r) => r.json())
-      .then((data: Country[]) => {
-        console.log(data);
-        const parsed: PhoneCountry[] = data
-          .filter((c) => c.idd?.root && c.idd?.suffixes?.length)
-          .map((c) => {
-            const code = `${c.idd.root}${c.idd.suffixes[0]}`;
-            return { code, name: c.name.common, flag: c.flag, cca2: c.cca2, placeholder: buildPlaceholder(code) };
-          })
-          .sort((a, b) => a.name.localeCompare(b.name));
-        setCountries(parsed);
-        setSelectedCountry(parsed.find((c) => c.code === "+237") ?? parsed[0]);
-      });
-  }, [open]);
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) setDropdownOpen(false);
@@ -79,11 +71,22 @@ export default function SignupDialog({ children }: SignupDialogProps) {
     setSubmitting(true);
     setError("");
     try {
-      await axiosInstance.post("/leads", { ...form, phoneCode: selectedCountry?.code });
-      setOpen(false);
+      const phone = `${selectedCountry?.code ?? ""}${form.phone}`.replace(/\D/g, "");
+      await axiosInstance.post("/auth/signup", {
+        name: form.name,
+        email: form.email,
+        birthYear: form.birthYear,
+        englishLevel: form.englishLevel,
+        phone,
+        nationality: selectedCountry?.nationality ?? "",
+      });
       router.push("/thank-you");
-    } catch {
-      setError("Something went wrong. Please try again.");
+      setOpen(false);
+    } catch (err) {
+      const message =
+        (axios.isAxiosError(err) && (err.response?.data?.message as string)) ||
+        "Something went wrong. Please try again.";
+      setError(message);
     } finally {
       setSubmitting(false);
     }
@@ -134,7 +137,11 @@ export default function SignupDialog({ children }: SignupDialogProps) {
             )}
             <input type="tel" placeholder={selectedCountry?.placeholder ?? "XXXXXXXXX"} value={form.phone} onChange={set("phone")} className="flex-1 h-full px-3 text-sm outline-none bg-transparent" />
           </div>
-          {error && <p className="text-red-500 text-xs text-center">{error}</p>}
+          {error && (
+            <div className="w-full bg-red-50 border border-red-200 text-red-600 text-xs text-center rounded px-3 py-2">
+              {error}
+            </div>
+          )}
           <button onClick={handleSubmit} disabled={submitting} className="w-full h-11 bg-[#dc3545] hover:bg-[#c82333] text-white font-bold text-sm tracking-widest uppercase border-none cursor-pointer rounded transition-colors mt-1 disabled:opacity-60 disabled:cursor-not-allowed">
             {submitting ? "Submitting..." : "Submit Your Details"}
           </button>
