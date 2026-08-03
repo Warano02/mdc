@@ -113,7 +113,7 @@ export default function WorkingHolidayPage() {
         style={{ backgroundImage: "url('/img/g/t/img_header_workingholiday_desktop.webp')" }}
       >
         <div className="absolute inset-0 bg-linear-to-l from-[rgba(20,4,92,0.23)] to-[rgba(3,8,59,0.57)]" />
-        <div className="relative z-10 h-full flex flex-col justify-center">
+        <div className="container relative z-10 h-full flex flex-col justify-center">
           <div className="ml-12 flex flex-col justify-center w-[50em] max-w-full text-white max-md:ml-0 max-md:items-center max-md:w-full">
             <h1 className="text-5xl font-bold mb-6 max-sm:text-4xl max-sm:text-center max-[450px]:text-3xl">
               Working Holiday (International Experience Canada)
@@ -133,14 +133,14 @@ export default function WorkingHolidayPage() {
       <section className="w-full py-4">
         <div className="w-[90%] mx-auto">
           <div className="w-full h-12 border-b border-gray-300 flex items-center mb-6">
-            <h3 className="text-xs text-gray-800">
+            <h3 className="container text-xs text-gray-800">
               <Link href="/" className="text-gray-400 no-underline">HOME /</Link>
               <Link href="/canadian-visas" className="text-gray-400 no-underline"> CANADIAN VISAS /</Link>
               {" "}WORKING HOLIDAY VISA
             </h3>
           </div>
 
-          <div className="flex flex-wrap justify-between items-center gap-4 max-[700px]:justify-center">
+          <div className="container flex flex-wrap justify-between items-center gap-4 max-[700px]:justify-center">
             {badges.map((b) => (
               <div key={b.label} className="flex items-center gap-3 w-[18em] p-1 max-[700px]:w-[95%]">
                 <div className="w-15 h-15 rounded-full flex items-center justify-center shrink-0">
@@ -154,7 +154,7 @@ export default function WorkingHolidayPage() {
       </section>
 
       <section className="w-full min-h-[33em] bg-gray-50 flex items-center justify-center py-10">
-        <div className="w-[95%] flex gap-6 max-[685px]:flex-col">
+        <div className="container lg:w-full md:w-[95%] flex gap-6 max-[685px]:flex-col">
           <div className="w-[35%] flex flex-col items-center pt-8 relative max-[685px]:w-full max-[685px]:h-[8em]">
             <h1 className="text-5xl text-primary font-serif text-center max-[1075px]:text-4xl max-[875px]:text-3xl max-[420px]:text-2xl">
               What is the Working Holiday Program (IEC)?
@@ -179,7 +179,7 @@ export default function WorkingHolidayPage() {
       </section>
 
       <section className="w-full min-h-[25em] flex items-center justify-center py-10 mt-2">
-        <div className="w-[95%]">
+        <div className="w-[95%] container">
           <div className="flex justify-center items-center mb-8 relative">
             <h1 className="text-5xl text-primary relative max-[435px]:text-3xl">
               Did you know?

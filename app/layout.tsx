@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 };
 export default function RootLayout({ children, }: Readonly<{ children: React.ReactNode; }>) {
   return (
-    <html lang="fr" className={cn(rubik.variable, playfairDisplay.variable, "font-sans", geist.variable)}>
+    <html lang="fr" className={cn(rubik.variable, playfairDisplay.variable, "font-sans", geist.variable)} suppressHydrationWarning>
       <body>
         {children}
       </body>
