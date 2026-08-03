@@ -3,9 +3,9 @@ import Link from "next/link";
 import SignupDialog from "@/components/SignupDialog";
 import FAQAccordion from "@/components/why-us/FAQAccordion";
 
-export const metadata={
-  title:"Why Use an RCIC? | MDC Canada",
-  keywords:"RCIC, Regulated Canadian Immigration Consultants, Canadian immigration"
+export const metadata = {
+  title: "Why Use an RCIC? | MDC Canada",
+  keywords: "RCIC, Regulated Canadian Immigration Consultants, Canadian immigration"
 }
 
 const features = [
@@ -36,29 +36,38 @@ const didYouKnow = [
 export default function HomePage() {
   return (
     <main className="w-full">
-      <section className="w-full h-[32em] bg-[url('/img/why_use_rcic.webp'),linear-gradient(to_left,rgb(255,255,255),rgb(40,49,124))] bg-no-repeat relative max-[870px]:bg-position-[-15em_center]">
-        <div className="w-full h-full flex flex-col justify-center pl-12 bg-[linear-gradient(to_left,rgba(255,255,255,0.123),rgba(3,13,100,0.39))] max-[620px]:pl-4">
-          <h1 className="text-[3.5em] text-white font-(--font-heading) max-[535px]:text-[2.5em]">Why use an RCIC?</h1>
-          <br />
-          <h3 className="text-white text-xl max-w-[28em] max-[535px]:max-w-full">Experienced and professional guidance from start to end</h3>
-          <br />
-          <SignupDialog>
-            <button className="w-40 h-10 font-bold text-white bg-transparent border-2 border-white cursor-pointer transition-all duration-300 hover:bg-white hover:text-primary">
-              GET STARTED
-            </button>
-          </SignupDialog>
+
+      <section
+        className="w-full h-[32em] bg-cover bg-center bg-no-repeat relative"
+        style={{ backgroundImage: "url('/img/why_use_rcic.webp')" }}
+      >
+        <div className="absolute inset-0 bg-linear-to-l from-[rgba(20,4,92,0.23)] to-[rgba(3,8,59,0.57)]" />
+        <div className="container relative z-10 h-full flex flex-col justify-center">
+          <div className="ml-12 flex flex-col justify-center w-[50em] max-w-full text-white max-md:ml-0 max-md:items-center max-md:w-full">
+            <h1 className="text-white text-5xl font-bold mb-6 max-sm:text-4xl max-sm:text-center max-[450px]:text-3xl">
+             Why use an RCIC?
+            </h1>
+            <p className="text-lg font-bold mb-10 max-sm:w-[95%] max-sm:text-center">
+              Experienced and professional guidance from start to end
+            </p>
+            <SignupDialog>
+              <button className="w-[10em] h-10 font-bold border-2 border-white text-white bg-transparent hover:bg-white hover:text-primary transition-colors duration-300 cursor-pointer">
+                GET STARTED
+              </button>
+            </SignupDialog>
+          </div>
         </div>
       </section>
 
       <section className="w-full">
         <div className="w-full flex justify-center py-4">
-          <div className="w-[90%]">
+          <div className="w-full relative">
             <div className="w-full h-12 border-b border-gray-400 flex items-center">
-              <h3 className="text-[0.8em] text-gray-900">
+              <h3 className="container text-[0.8em] text-gray-900">
                 <span className="text-gray-400">HOME /</span> WHY USE AN RCIC?
               </h3>
             </div>
-            <div className="w-full flex justify-between items-center flex-wrap gap-4 py-4 max-[660px]:flex-col">
+            <div className="container w-full flex justify-between items-center flex-wrap gap-4 py-4 max-[660px]:flex-col">
               {features.map((f) => (
                 <div key={f.label} className="flex items-center gap-4 p-1 max-[660px]:w-full">
                   <div className="w-15 h-15 rounded-full flex items-center justify-center shrink-0">
@@ -71,14 +80,14 @@ export default function HomePage() {
           </div>
         </div>
         <div className="w-full h-[19em] bg-[url('/img/img_infobanner_desktop_whyuseRCIC1.jpg')] bg-cover bg-center flex justify-center items-center max-[660px]:h-[25em] max-[440px]:h-[35em]">
-          <h2 className="w-[80%] text-center leading-[1.5em] text-white text-[2em] max-[1135px]:text-[1.5em]">
+          <h2 className="container text-center leading-[1.5em] text-white text-[2em] max-[1135px]:text-[1.5em]">
             The Canadian immigration process is complex and complicated. Our certified immigration consultants (RCICs) take the "how" out of the process with simplified steps, hand-in-hand guidance and personalized strategies tailored to your needs.
           </h2>
         </div>
       </section>
 
       <section className="w-full min-h-[32em] bg-[#f7f7f7] flex justify-center items-center mt-[0.2em] max-[750px]:h-auto">
-        <div className="w-[90%] h-[90%] flex justify-between p-8 max-[750px]:flex-col max-[750px]:p-4">
+        <div className="container h-[90%] flex justify-between p-8 max-[750px]:flex-col max-[750px]:p-4">
           <div className="w-[60%] flex justify-center mt-8 pt-16 relative max-[1025px]:w-[50%] max-[750px]:w-full max-[750px]:mt-4 max-[750px]:pt-4 max-[750px]:mb-8">
             <h1 className="text-[3em] text-primary font-(--font-heading) relative after:content-[''] after:absolute after:w-8 after:h-0.5 after:bg-[#dc3545] after:top-[1.3em] after:left-0 max-[1025px]:text-[2em] max-[475px]:text-[2em]">
               Why Use an RCIC?
@@ -125,8 +134,8 @@ export default function HomePage() {
       </section>
 
       <section className="w-full h-[32em] bg-[url('/img/img_banner_RCICS_desktop.jpg')] bg-cover flex justify-center items-center relative max-[835px]:h-auto">
-        <div className="w-[95%] h-[95%] relative">
-          <div className="w-full h-[25em] overflow-x-auto overflow-y-hidden flex mb-4 scrollbar-none snap-x snap-mandatory max-[835px]:h-auto max-[835px]:flex-col">
+        <div className="container h-[95%] relative">
+          <div className="w-full h-[25em] overflow-x-auto overflow-y-hidden flex mb-4 scrollbar-none snap-x snap-mandatory max-[835px]:h-auto max-[835px]:flex-col no-scrollbar">
             {rcicPoints.map((p, i) => (
               <div key={i} className="w-full shrink-0 flex items-center justify-between m-4 snap-start max-[835px]:flex-col max-[835px]:m-2">
                 <div className="w-[40%] flex justify-center items-center max-[835px]:w-full">
@@ -155,7 +164,7 @@ export default function HomePage() {
               Did you know?
             </h1>
           </div>
-          <div className="w-[80%] ml-24 flex items-center justify-around flex-wrap gap-[2.2em] mt-8 max-[855px]:w-full max-[855px]:ml-0 max-[430px]:ml-4">
+          <div className="container ml-24 flex items-center justify-around flex-wrap gap-[2.2em] mt-8 max-[855px]:w-full max-[855px]:ml-0 max-[430px]:ml-4">
             {didYouKnow.map((d) => (
               <div key={d.alt} className="w-[14em] h-[10em] rounded-[10px] border-2 border-gray-400/70 relative flex justify-center items-center">
                 <Image src={d.src} alt={d.alt} width={48} height={48} loading="lazy" className="absolute top-[-2em]" />
@@ -165,7 +174,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-      <FAQAccordion/>
+      <FAQAccordion />
     </main>
   );
 }

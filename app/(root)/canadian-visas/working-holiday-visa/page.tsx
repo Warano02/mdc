@@ -115,7 +115,7 @@ export default function WorkingHolidayPage() {
         <div className="absolute inset-0 bg-linear-to-l from-[rgba(20,4,92,0.23)] to-[rgba(3,8,59,0.57)]" />
         <div className="container relative z-10 h-full flex flex-col justify-center">
           <div className="ml-12 flex flex-col justify-center w-[50em] max-w-full text-white max-md:ml-0 max-md:items-center max-md:w-full">
-            <h1 className="text-5xl font-bold mb-6 max-sm:text-4xl max-sm:text-center max-[450px]:text-3xl">
+            <h1 className="text-white text-5xl font-bold mb-6 max-sm:text-4xl max-sm:text-center max-[450px]:text-3xl">
               Working Holiday (International Experience Canada)
             </h1>
             <p className="text-lg font-bold mb-10 max-sm:w-[95%] max-sm:text-center">
@@ -131,7 +131,7 @@ export default function WorkingHolidayPage() {
       </section>
 
       <section className="w-full py-4">
-        <div className="w-[90%] mx-auto">
+        <div className=" mx-auto">
           <div className="w-full h-12 border-b border-gray-300 flex items-center mb-6">
             <h3 className="container text-xs text-gray-800">
               <Link href="/" className="text-gray-400 no-underline">HOME /</Link>
@@ -183,7 +183,7 @@ export default function WorkingHolidayPage() {
           <div className="flex justify-center items-center mb-8 relative">
             <h1 className="text-5xl text-primary relative max-[435px]:text-3xl">
               Did you know?
-              <span className="absolute -bottom-1 left-full ml-4 w-10 h-0.5 bg-red-600" />
+              <span className="absolute -bottom-1 left-1/2 -translatex-1/2 ml-4 w-10 h-0.5 bg-red-600" />
             </h1>
           </div>
 
@@ -208,9 +208,9 @@ export default function WorkingHolidayPage() {
       </section>
 
       <section className="w-full min-h-[32em] bg-primary text-white flex items-center justify-center py-10">
-        <div className="w-[90%] flex max-[735px]:flex-col gap-8">
+        <div className="container w-[90%] flex max-[735px]:flex-col gap-8">
           <div className="w-1/2 flex flex-col justify-center gap-3 max-[735px]:w-[90%]">
-            <h1 className="text-5xl font-serif max-[410px]:text-3xl">Why use MDC?</h1>
+            <h1 className="text-white text-5xl font-serif max-[410px]:text-3xl">Why use MDC?</h1>
             <div className="w-20 h-0.5 bg-red-600" />
           </div>
           <div className="w-1/2 flex flex-col justify-center gap-6 mt-8 max-[735px]:w-[90%]">
@@ -224,11 +224,11 @@ export default function WorkingHolidayPage() {
         </div>
       </section>
 
-      <section className="w-full py-10 flex items-center justify-center">
-        <div className="w-[90%] flex flex-col items-center">
+      <section className="w-full py-10 flex items-center justify-center relative">
+        <div className="container w-[90%] flex flex-col items-center relative">
           <h1 className="text-5xl text-primary mb-4 relative max-[440px]:text-3xl">
             Meet Our Team
-            <span className="absolute -bottom-1 left-full ml-4 w-10 h-0.5 bg-red-600" />
+            <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-10 h-0.5 bg-red-600" />
           </h1>
           <p className="w-[60%] text-center leading-relaxed text-lg font-light mb-8 max-[930px]:w-[80%]">
             Our{" "}
@@ -238,11 +238,11 @@ export default function WorkingHolidayPage() {
             know what it take to guide you through the immigration process until you safety arrive in Canada.
           </p>
 
-          <div className="flex flex-wrap justify-center items-center gap-4 w-full mb-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 w-full mb-6">
             {team.map((member) => (
               <div
                 key={member.name}
-                className="w-[20em] h-[17em] flex flex-col items-center justify-center gap-2 max-[755px]:w-[18em] max-[685px]:w-[15em]"
+                className="max-w-[20em] h-[17em] flex flex-col items-center justify-center gap-2 max-[755px]:w-[18em] max-[685px]:w-[15em]"
               >
                 <div className="rounded-full overflow-hidden mb-4">
                   <Image src={member.src} alt={member.name} width={100} height={100} className="object-cover" />
@@ -258,7 +258,7 @@ export default function WorkingHolidayPage() {
             ))}
           </div>
 
-          <div className="w-full flex items-center justify-center h-[10em]">
+          <div className="w-full flex items-center justify-center h-[8em] ">
             <Link href="">
               <Image src="/img/iccrc-new.png" alt="iccrc" width={180} height={59} />
             </Link>

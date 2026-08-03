@@ -22,7 +22,7 @@ function BusinessVisa() {
         style={{ backgroundImage: "url('/img/bg/express_d.jpg')" }}
       >
         <div className="absolute inset-0 bg-linear-to-l from-[rgba(20,4,92,0.23)] to-[rgba(3,8,59,0.57)]" />
-        <div className="relative z-10 h-full flex flex-col justify-center">
+        <div className="container relative z-10 h-full flex flex-col justify-center">
           <div className="ml-12 flex flex-col justify-center w-[50em] max-w-full text-white max-md:ml-0 max-md:items-center max-md:w-full">
             <p className="text-5xl text-white font-bold mb-6 max-sm:text-4xl max-sm:text-center max-[450px]:text-3xl">
               Business Immigration Programs
@@ -40,7 +40,7 @@ function BusinessVisa() {
       </section>
 
       <div className="w-full border-b border-gray-300 flex items-center px-8 h-12">
-        <h3 className="text-xs text-gray-800">
+        <h3 className="container text-xs text-gray-800">
           <Link href="/" className="text-gray-400 no-underline">HOME /</Link>
           <Link href="/canadian-visas" className="text-gray-400 no-underline"> CANADIAN VISAS /</Link>
           {" "}BUSINESS IMMIGRATION PROGRAMS

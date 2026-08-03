@@ -13,9 +13,9 @@ function KnowAgents() {
         style={{ backgroundImage: "url('/img/title/img_header_knownagents_desktop.webp')" }}
       >
         <div className="absolute inset-0 bg-linear-to-l from-[rgba(20,4,92,0.23)] to-[rgba(3,8,59,0.57)]" />
-        <div className="relative z-10 h-full flex flex-col justify-center">
-          <div className="ml-12 flex flex-col justify-center w-[50em] max-w-full text-white max-md:ml-0 max-md:items-center max-md:w-full">
-            <h1 className="text-5xl font-bold mb-6 max-sm:text-4xl max-sm:text-center max-[450px]:text-3xl">
+        <div className="container relative z-10 h-full flex flex-col justify-center">
+          <div className="flex flex-col justify-center w-full max-w-full text-white max-md:ml-0 max-md:items-center max-md:w-full">
+            <h1 className="text-white text-5xl font-bold mb-6 max-sm:text-4xl max-sm:text-center max-[450px]:text-3xl">
               Known Agents
             </h1>
             <p className="text-lg font-bold mb-10 max-sm:w-[95%] max-sm:text-center">
@@ -30,14 +30,14 @@ function KnowAgents() {
         </div>
       </section>
       <div className="w-full border-b border-gray-300 flex items-center px-8 h-12">
-        <h3 className="text-xs text-gray-800">
+        <h3 className="container text-xs text-gray-800">
           <Link href="/" className="text-gray-400 no-underline">HOME /</Link>
           {" "}KNOWN AGENT
         </h3>
       </div>
 
       <div className="flex gap-8 px-8 py-10 w-full max-w-5xl mx-auto">
-        <div className="w-[220px] shrink-0 bg-gray-50 flex items-center justify-center p-6">
+        <div className="w-55 shrink-0 bg-gray-50 flex items-center justify-center p-6">
           <Image
             src="/img/visa_de_canada.png"
             alt="Visa de Canada"

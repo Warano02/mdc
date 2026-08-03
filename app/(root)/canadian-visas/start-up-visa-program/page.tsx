@@ -115,9 +115,9 @@ export default function StartupVisa() {
         style={{ backgroundImage: "url('/img/g/img_header_startupvisa_desktop.jpg')" }}
       >
         <div className="absolute inset-0 bg-linear-to-l from-[rgba(20,4,92,0.23)] to-[rgba(3,8,59,0.57)]" />
-        <div className="relative z-10 h-full flex flex-col justify-center">
+        <div className="container relative z-10 h-full flex flex-col justify-center">
           <div className="ml-12 flex flex-col justify-center w-[50em] max-w-full text-white max-md:ml-0 max-md:items-center max-md:w-full">
-            <h1 className="text-5xl font-bold mb-6 max-sm:text-4xl max-sm:text-center max-[450px]:text-3xl">
+            <h1 className="text-white text-5xl font-bold mb-6 max-sm:text-4xl max-sm:text-center max-[450px]:text-3xl">
               Start-up Visa Program
             </h1>
             <p className="text-lg font-bold mb-10 max-sm:w-[95%] max-sm:text-center">
@@ -133,16 +133,16 @@ export default function StartupVisa() {
       </section>
 
       <section className="w-full py-4">
-        <div className="w-[90%] mx-auto">
-          <div className="w-full h-12 border-b border-gray-300 flex items-center mb-6">
-            <h3 className="text-xs text-gray-800">
+        <div className=" w-full">
+          <div className=" w-full h-12 border-b border-gray-300 flex items-center mb-6">
+            <h3 className="container text-xs text-gray-800">
               <Link href="/" className="text-gray-400 no-underline">HOME /</Link>
               <Link href="/canadian-visas" className="text-gray-400 no-underline"> CANADIAN VISAS /</Link>
               {" "}START-UP VISA PROGRAM
             </h3>
           </div>
 
-          <div className="flex flex-wrap justify-between items-center gap-4 max-[700px]:justify-center">
+          <div className=" container flex flex-wrap justify-between items-center gap-4 max-[700px]:justify-center">
             {badges.map((b) => (
               <div key={b.label} className="flex items-center gap-3 w-[18em] p-1 max-[700px]:w-[95%]">
                 <div className="w-15 h-15 rounded-full flex items-center justify-center shrink-0">
@@ -156,9 +156,9 @@ export default function StartupVisa() {
       </section>
 
       <section className="w-full min-h-[33em] bg-gray-50 flex items-center justify-center py-10">
-        <div className="w-[95%] flex gap-6 max-[685px]:flex-col">
+        <div className="container flex gap-6 max-[685px]:flex-col">
           <div className="w-[35%] flex flex-col items-center pt-8 relative max-[685px]:w-full max-[685px]:h-[8em]">
-            <h1 className="text-5xl text-primary font-serif text-center max-[1075px]:text-4xl max-[875px]:text-3xl max-[420px]:text-2xl">
+            <h1 className="text-4xl text-primary font-serif text-center max-[1075px]:text-4xl max-[875px]:text-3xl max-[420px]:text-2xl">
               What is the Start-up Visa Program?
             </h1>
             <div className="w-20 h-0.5 bg-red-600 mt-4" />
@@ -179,15 +179,15 @@ export default function StartupVisa() {
       </section>
 
       <section className="w-full min-h-[25em] flex items-center justify-center py-10 mt-2">
-        <div className="w-[95%]">
+        <div className="container">
           <div className="flex justify-center items-center mb-8 relative">
             <h1 className="text-5xl text-primary relative max-[435px]:text-3xl">
               Did you know?
-              <span className="absolute -bottom-1 left-full ml-4 w-10 h-0.5 bg-red-600" />
+              <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-10 h-0.5 bg-red-600" />
             </h1>
           </div>
 
-          <div className="flex items-center justify-around flex-wrap gap-6 w-[80%] mx-auto mt-8 max-[780px]:flex-wrap max-[435px]:w-full max-[435px]:justify-center">
+          <div className="flex items-center justify-around flex-wrap gap-6 w-full mx-auto mt-8 max-[780px]:flex-wrap max-[435px]:w-full max-[435px]:justify-center">
             {didYouKnow.map((item) => (
               <div
                 key={item.text}
@@ -202,9 +202,9 @@ export default function StartupVisa() {
       </section>
 
       <section className="w-full min-h-[32em] bg-primary text-white flex items-center justify-center py-10">
-        <div className="w-[90%] flex max-[735px]:flex-col gap-8">
+        <div className="container flex max-[735px]:flex-col gap-8">
           <div className="w-1/2 flex flex-col justify-center gap-3 max-[735px]:w-[90%]">
-            <h1 className="text-5xl font-serif max-[410px]:text-3xl">Why use MDC?</h1>
+            <h1 className="text-white text-4xl font-serif max-[410px]:text-3xl">Why use MDC?</h1>
             <div className="w-20 h-0.5 bg-red-600" />
           </div>
           <div className="w-1/2 flex flex-col justify-center gap-6 mt-8 max-[735px]:w-[90%]">
@@ -222,7 +222,7 @@ export default function StartupVisa() {
         <div className="w-[90%] flex flex-col items-center">
           <h1 className="text-5xl text-primary mb-4 relative max-[440px]:text-3xl">
             Meet Our Team
-            <span className="absolute -bottom-1 left-full ml-4 w-10 h-0.5 bg-red-600" />
+            <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-10 h-0.5 bg-red-600" />
           </h1>
           <p className="w-[60%] text-center leading-relaxed text-lg font-light mb-8 max-[930px]:w-[80%]">
             Our{" "}

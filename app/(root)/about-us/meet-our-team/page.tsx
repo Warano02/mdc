@@ -34,9 +34,9 @@ function page() {
             <section className="w-full h-[36em] bg-cover bg-center bg-no-repeat relative"
                 style={{ backgroundImage: "url('/img/title/intro.jpg')" }}>
                 <div className="absolute inset-0 " />
-                <div className="relative z-10 h-full flex flex-col justify-center">
-                    <div className="ml-12 flex flex-col justify-center w-[50em] max-w-full text-white max-md:ml-0 max-md:items-center max-md:w-full">
-                        <h1 className="text-5xl font-serif mb-6">About Us</h1>
+                <div className="container not-only-of-type:relative z-10 h-full flex flex-col justify-center">
+                    <div className="flex flex-col justify-center w-[50em] max-w-full text-white max-md:ml-0 max-md:items-center max-md:w-full">
+                        <h1 className="text-white text-5xl font-serif mb-6">About Us</h1>
                         <p className="font-semibold leading-relaxed mb-8 max-w-sm">
                             We provide the guidance and services to make your Canadian immigration process easy, affordable, and reliable.
                         </p>
@@ -51,7 +51,7 @@ function page() {
             <section className="w-full py-16 flex flex-col items-center gap-12">
                 <h1 className="text-5xl font-serif text-primary">Meet Our Team</h1>
 
-                <div className="flex gap-12 w-[80%] max-w-4xl items-start max-md:flex-col max-md:items-center">
+                <div className="flex gap-12 w-full container items-start max-md:flex-col max-md:items-center">
                     <Image
                         src="/img/pp/172522ec1028ab781d9dfd17eaca4427.png"
                         alt="David Allon"
@@ -83,7 +83,7 @@ function page() {
                     know what it takes to guide you through the immigration process until you safely arrive in Canada.
                 </p>
             </section>
-            <div className="flex flex-col gap-12 w-[80%] max-w-4xl mx-auto py-10">
+            <div className="flex flex-col gap-12  container py-10">
                 {members.map((member) => (
                     <div key={member.name} className="flex gap-10 items-start max-md:flex-col max-md:items-center">
                         <Image
