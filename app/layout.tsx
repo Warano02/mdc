@@ -3,6 +3,7 @@ import { Rubik, Playfair_Display, Geist } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import Header from "@/components/Header";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const geist = Geist({ subsets: ['latin'], variable: '--font-sans' });
 
@@ -27,7 +28,15 @@ export default function RootLayout({ children, }: Readonly<{ children: React.Rea
   return (
     <html lang="fr" className={cn(rubik.variable, playfairDisplay.variable, "font-sans", geist.variable)} suppressHydrationWarning>
       <body>
-        {children}
+      <ThemeProvider
+                attribute="class"
+                defaultTheme="light"
+                forcedTheme="light"
+                enableSystem={false}
+                disableTransitionOnChange
+              >
+                {children}
+              </ThemeProvider>
       </body>
     </html>
   );
