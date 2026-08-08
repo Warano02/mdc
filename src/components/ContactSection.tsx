@@ -74,7 +74,7 @@ export default function ContactSection() {
   return (
     <section className="w-full flex gap-8 justify-center items-center py-12 flex-col md:flex-row md:items-start px-4">
       <div className="w-full md:w-[22em] ml-0 md:ml-4">
-        <h1 className="mt-4 mb-6 text-[2.5em] text-primary font-serif leading-tight">
+        <h1 className="mt-4 mb-6 text-2xl md:text-[2.5em] text-primary font-serif leading-tight">
           Regulated Canadian Immigration Consultants
         </h1>
 
@@ -125,11 +125,11 @@ export default function ContactSection() {
       </div>
 
       <div className="w-full md:w-[55em]">
-        <h3 className="mt-8 ml-4 text-[1.5em] text-primary font-serif mb-4">
+        <h3 className="mt-8 md:ml-4 text-[1.5em] text-primary font-serif mb-4">
           Leave a message
         </h3>
 
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4 ml-6 w-[90%]">
+        <form onSubmit={handleSubmit} className="w-full flex flex-col gap-4 md:ml-6 md:w-[90%]">
           <input
             type="text"
             name="name"

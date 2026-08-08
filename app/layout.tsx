@@ -28,15 +28,15 @@ export default function RootLayout({ children, }: Readonly<{ children: React.Rea
   return (
     <html lang="fr" className={cn(rubik.variable, playfairDisplay.variable, "font-sans", geist.variable)} suppressHydrationWarning>
       <body>
-      <ThemeProvider
-                attribute="class"
-                defaultTheme="light"
-                forcedTheme="light"
-                enableSystem={false}
-                disableTransitionOnChange
-              >
-                {children}
-              </ThemeProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          forcedTheme="light"
+          enableSystem={false}
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

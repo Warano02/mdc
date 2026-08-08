@@ -73,7 +73,7 @@ export default function Header() {
 
   return (
     <header className="w-full bg-white shadow-[0_4px_20px_1px_rgba(0,0,0,0.2)] fixed top-0 z-50">
-      <div className="container flex items-center h-[5.8em] relative pl-8 max-[1088px]:pl-4 max-[1088px]:justify-between">
+      <div className="container flex items-center h-[5.8em] relative max-[1088px]:justify-between">
         <div className="flex items-center h-full shrink-0 pr-4">
           <button aria-label="Toggle navigation" onClick={() => setMobileOpen((p) => !p)} className="hidden max-[1088px]:flex items-center justify-center w-16 h-full text-primary bg-transparent border-none cursor-pointer">
             <Menu size={28} />
@@ -125,7 +125,7 @@ export default function Header() {
             </ul>
           </nav>
         )}
-        <div className="flex items-center h-full border-l border-gray-300 ml-2 pl-4 gap-1 shrink-0 relative" ref={loginRef}>
+        <div className="hidden md:flex items-center h-full border-l border-gray-300 ml-2 pl-4 gap-1 shrink-0 relative" ref={loginRef}>
           {!searchOpen && (
             <button onClick={() => setLoginOpen((p) => !p)} className="flex items-center gap-1 text-primary font-bold text-sm bg-transparent border-none cursor-pointer whitespace-nowrap hover:text-primary-light transition-colors">
               Login <ChevronDown size={14} />
@@ -140,7 +140,7 @@ export default function Header() {
         </div>
 
         <SignupDialog>
-          <button className="h-full w-[13em] bg-[#dc3545] text-white font-bold font-mono text-[1.1em] tracking-[0.5px] flex items-center justify-center border-none cursor-pointer hover:bg-[#e93c4e] shrink-0 max-[655px]:w-[10em] max-[455px]:w-[7em] max-[455px]:text-[0.85em]">
+          <button className="h-full w-1/2 bg-[#dc3545] text-white font-bold font-mono text-[1.1em] tracking-[0.5px] flex items-center justify-center border-none cursor-pointer hover:bg-[#e93c4e] shrink-0  max-[455px]:text-[0.85em]">
             START TODAY
           </button>
         </SignupDialog>

@@ -61,12 +61,12 @@ const story = [
 
 export default function HomePage() {
   return (
-    <main className="w-full relative">
-      <section className="w-full h-auto  bg-[url('/img/home_1.webp'),linear-gradient(to_left,rgb(255,255,255),rgb(40,49,124))] bg-cover bg-no-repeat relative ">
-        <div className="w-full h-128.5 flex flex-col justify-center items-center bg-[linear-gradient(to_left,rgba(255, 255, 255, 0.47),rgba(3,13,100,0.59))] bg-auto bg-no-repeat container">
-          <h1 className="text-[3.5em] text-white font-(--font-heading) w-7xl:text-2xl">Your journey to Canada starts here</h1>
+    <main className="w-screen relative">
+      <section className="w-full h-auto  bg-[url('/img/home_1.webp'),linear-gradient(to_left,rgb(255,255,255),rgb(40,49,124))] bg-cover bg-no-repeat  relative ">
+        <div className="container w-full md:h-128.5 flex flex-col justify-center items-center bg-[linear-gradient(to_left,rgba(255, 255, 255, 0.47),rgba(3,13,100,0.59))] bg-auto bg-no-repeat ">
+          <h1 className="text-3xl text-center md:text-start text-white font-(--font-heading) ">Your journey to Canada starts here</h1>
           <br />
-          <h3 className="text-white text-xl max-w-[28em]">
+          <h3 className="text-white text-center md:text-start md:text-xl md:max-w-[28em]">
             We provide the guidance and services to make your Canadian immigration process easy, affordable, and reliable.
           </h3>
           <br />
@@ -76,50 +76,50 @@ export default function HomePage() {
             </button>
           </SignupDialog>
 
-          <div className="flex gap-2 mt-6">
-            <div className="w-50 h-16.5 rounded-lg relative">
+          <div className="grid grid-cols-2 w-full md:flex flex-wrap items-center gap-4  md:gap-2 my-6 relative">
+            <div className="w-full md:w-50 h-16.5 rounded-lg relative overflow-hidden">
               <Image src={"/cvr-review.png"} alt="cvr review" fill className="object-fit" />
             </div>
-            <div className="w-50 h-16.5 rounded-lg relative">
-              <Image src={"/google-review.png"} alt="cvr review" fill className="object-fit" />
+            <div className="w-full md:w-50 h-16.5 rounded-lg relative overflow-hidden">
+              <Image src={"/google-review.png"} alt="cvr review" fill className="object-cover md:object-fit" />
             </div>
-            <div className="w-50 h-16.5 rounded-lg relative">
-              <Image src={"/tp-review.png"} alt="cvr review" fill className="object-fit" />
+            <div className="w-full md:w-50 h-16.5 rounded-lg relative overflow-hidden">
+              <Image src={"/tp-review.png"} alt="cvr review" fill className="object-cover md:object-fit" />
             </div>
           </div>
         </div>
 
-        <div className="w-full h-32.5 bg-primary ">
-          <div className="container w-full h-full flex items-center justify-center gap-4 relative ">
-            <div className="w-60 h-20.5 relative flex items-center gap-2">
-              <span className="relative w-14.5 h-11.5">
+        <div className="w-full min-h-32.5 bg-primary ">
+          <div className="md:container w-full h-full grid grid-cols-2 md:flex items-center justify-center gap-2 md:gap-4 relative ">
+            <div className="w-full md:w-60 h-20.5 relative flex items-center gap-2">
+              <span className="relative w-19.5 md:w-14.5 h-11.5">
                 <Image src={"/img/icon/certified.png"} fill className="object-cover" alt="certified icon" />
               </span>
-              <span className="relative text-white  font-semibold">
+              <span className="relative text-xs md:text-base text-white  font-semibold">
                 Certified Immigration Consultants
               </span>
             </div>
-            <div className="w-60 h-20.5 relative flex items-center gap-2">
+            <div className="w-full md:w-60 h-20.5 relative flex items-center gap-2">
               <span className="relative  w-13.5 h-11.5">
                 <Image src={"/img/icon/experience.png"} fill className="object-cover" alt="certified icon" />
               </span>
-              <span className="relative text-white  font-semibold">
+              <span className="relative text-xs md:text-base text-white  font-semibold">
                 Years of Experience
               </span>
             </div>
-            <div className="w-60 h-20.5 relative flex items-center gap-2">
+            <div className="w-full md:w-60 h-20.5 relative flex items-center gap-2">
               <span className="relative  w-13.5 h-11.5">
                 <Image src={"/img/icon/Applications.png"} fill className="object-cover" alt="certified icon" />
               </span>
-              <span className="relative text-white font-semibold">
+              <span className="relative text-xs md:text-base text-white font-semibold">
                 1000s of Satisfied Clients
               </span>
             </div>
-            <div className="w-60 h-20.5 relative flex items-center gap-2">
+            <div className="w-full md:w-60 h-20.5 relative flex items-center gap-2">
               <span className="relative  w-13.5 h-11.5">
                 <Image src={"/img/icon/Guidance.png"} fill className="object-cover" alt="certified icon" />
               </span>
-              <span className="relative text-white  font-semibold">
+              <span className="relative text-xs md:text-base text-white  font-semibold">
                 24/7 Support and Guidance
               </span>
             </div>

@@ -207,5 +207,5 @@ a {
 }
 
 .container {
-  @apply w-full max-w-7xl mx-auto px-8 max-[1088px]:px-6 max-[560px]:px-4;
+  @apply w-full max-w-7xl mx-auto md:px-8 max-[1088px]:px-6 max-[560px]:px-4;
 }
