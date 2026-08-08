@@ -15,14 +15,14 @@ const visaItems = [
   {
     title: "Provincial Nominee Program",
     image: "/img/g/img_PNP_desktop.jpg",
-    href: "#",
+    href: "/canadian-visas/business-immigration-programs",
     imageLeft: false,
     text: "The Provincial Nominee Program (PNP) allows foreign skilled workers to earn permanent residence if they commit to living and working in a particular region of Canada. Each province and territory has its own version of the PNP that is designed to address their specific labour market needs. With a provincial nomination, you will receive an extra 600 points to add to your Comprehensive Ranking System score, which essentially guarantees you will be invited to request Canadian permanent residency.",
   },
   {
     title: "Family Sponsorship Program",
     image: "/img/g/img_FamSponsership_desktop.jpg",
-    href: "#",
+    href: "/canadian-visas/family-sponsorship-visa",
     imageLeft: true,
     text: "The Family Sponsorship Program is aimed at assisting permanent residents and citizens of Canada to sponsor their parents, spouse, children and other relatives for Canadian permanent residence. Candidates who are over 18 and legally live in Canada may be eligible.",
   },
@@ -36,14 +36,14 @@ const visaItems = [
   {
     title: "Study Permit",
     image: "/img/g/img_studentvisa_desktop.jpg",
-    href: "#",
+    href: "/canadian-visas/student-visa",
     imageLeft: true,
     text: "Canadian Study Permit allow candidates to study at any tertiary institution in the country and work on a part-time basis. It is perfect for candidates who want the opportunity to earn a world-class education or for postgraduates who would like to further their tertiary education at some of the most innovative and renowned institutions in the world.",
   },
   {
     title: "Tourist Permit",
     image: "/img/g/img_touristvisa_desktop.jpg",
-    href: "#",
+    href: "/canadian-visas/tourist-visa",
     imageLeft: false,
     text: "The Tourist Permit allows you to discover the best that Canada has to offer for up to six months. Canada has over 40 National parks and Reserves to explore, beautiful lakes and rivers to canoe down, magnificent ice-covered mountains to hike, never-ending coastlines to visit and the awe-inspiring northern lights to behold. There are numerous international festivals and events to attend, as well as a vibrant art scene and bustling nightlife.",
   },
@@ -57,7 +57,7 @@ const visaItems = [
   {
     title: "Pilot Programs",
     image: "/img/g/img_caregiver_desktop.jpg",
-    href: "#",
+    href: "/canadian-visas/business-immigration-programs",
     imageLeft: false,
     text: "The Atlantic Immigration Pilot, Agri-food Pilot and the Rural & Northern Immigration Pilot are exciting new ways for hard working immigrants to become permanent residents by securing a job offer in a certain region or community, or in a specific profession in Canada. The key is to apply to these programs early, as spaces are limited.",
   },
@@ -98,7 +98,7 @@ export default function VisasPage() {
           <div className="mt-2">
             <div className="w-full flex flex-col md:flex-row h-auto md:h-[27em] mb-2">
               <div className="w-full md:w-[36em] md:h-full flex flex-col justify-center items-center">
-                <h1 className="text-5xl text-primary font-serif mb-4">Canadian Visa Types</h1>
+                <h1 className="text-3xl md:text-5xl text-primary font-serif mb-2 md:mb-4">Canadian Visa Types</h1>
                 <div className="w-20 h-0.5 bg-red-600" />
               </div>
               <div className="w-full md:w-[36em] md:h-full flex items-center">
@@ -125,12 +125,12 @@ export default function VisasPage() {
                     <div className="w-full md:w-[36em] h-[25em] md:h-full relative">
                       <Image src={item.image} alt={item.title} fill className="object-cover" />
                     </div>
-                    <div className="w-full md:w-[36em] md:h-full flex flex-col justify-center relative px-4 py-6">
+                    <div className="w-full md:w-[36em] md:h-full flex flex-col justify-center relative md:px-4 py-6">
                       <h2 className="text-3xl text-primary font-serif mb-4 max-sm:text-2xl">{item.title}</h2>
                       <p className="w-[95%] mb-4 leading-relaxed">{item.text}</p>
                       <Link
                         href={item.href}
-                        className="font-bold no-underline text-primary absolute left-4 bottom-20 hover:opacity-70 transition-opacity after:content-[''] after:inline-block after:ml-2 after:border-t-2 after:border-b-2 after:border-l-3 after:border-t-transparent after:border-b-transparent after:border-l-primary max-sm:bottom-12 mt-6"
+                        className="font-bold no-underline text-primary md:absolute left-4 -bottom-4 md:bottom-20 hover:opacity-70 transition-opacity after:content-[''] after:inline-block after:ml-2 after:border-t-2 after:border-b-2 after:border-l-3 after:border-t-transparent after:border-b-transparent after:border-l-primary max-sm:bottom-12 md:mt-6"
                       >
                         READ MORE
                       </Link>
@@ -138,12 +138,12 @@ export default function VisasPage() {
                   </>
                 ) : (
                   <>
-                    <div className="w-full md:w-[36em] md:h-full flex flex-col justify-center relative px-4 py-6">
+                    <div className="w-full md:w-[36em] md:h-full flex flex-col justify-center relative md:px-4 py-6">
                       <h2 className="text-3xl text-primary font-serif mb-4 max-sm:text-2xl">{item.title}</h2>
                       <p className="w-[95%] mb-4 leading-relaxed">{item.text}</p>
                       <Link
                         href={item.href}
-                        className="font-bold no-underline text-primary absolute left-4 bottom-20 hover:opacity-70 transition-opacity after:content-[''] after:inline-block after:ml-2 after:border-t-2 after:border-b-2 after:border-l-3 after:border-t-transparent after:border-b-transparent after:border-l-primary max-sm:bottom-12"
+                        className="font-bold no-underline text-primary md:not-odd:absolute left-4 bottom-20 hover:opacity-70 transition-opacity after:content-[''] after:inline-block after:ml-2 after:border-t-2 after:border-b-2 after:border-l-3 after:border-t-transparent after:border-b-transparent after:border-l-primary max-sm:bottom-12"
                       >
                         READ MORE
                       </Link>
@@ -163,7 +163,7 @@ export default function VisasPage() {
         className="w-full h-[17em] bg-cover bg-center flex flex-col items-center justify-center gap-4 text-white"
         style={{ backgroundImage: "url('/img/g/img_banner_howwecanhelp_desktop.jpg')" }}
       >
-        <h2 className="text-5xl font-mono">How We Can Help</h2>
+        <h2 className="text-3xl md:text-5xl font-mono">How We Can Help</h2>
         <p className="w-[90%] text-center leading-relaxed">
           Interested in pursuing a new life in Canada? Our team of Regulated Canadian Immigration
           Consultants (RCICs) are highly qualified to help you understand and navigate through the

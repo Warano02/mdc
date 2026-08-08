@@ -225,12 +225,12 @@ export default function WorkingHolidayPage() {
       </section>
 
       <section className="w-full py-10 flex items-center justify-center relative">
-        <div className="container w-[90%] flex flex-col items-center relative">
+        <div className="md:container w-full md:w-[90%] flex flex-col items-center relative">
           <h1 className="text-5xl text-primary mb-4 relative max-[440px]:text-3xl">
             Meet Our Team
             <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-10 h-0.5 bg-red-600" />
           </h1>
-          <p className="w-[60%] text-center leading-relaxed text-lg font-light mb-8 max-[930px]:w-[80%]">
+          <p className="md:w-[60%] text-center leading-relaxed text-lg font-light mb-8 max-[930px]:w-[80%]">
             Our{" "}
             <Link href="" className="text-primary no-underline hover:underline transition-all">
               Regulated Canadian Immigration Consultants (RCICs)
@@ -238,21 +238,21 @@ export default function WorkingHolidayPage() {
             know what it take to guide you through the immigration process until you safety arrive in Canada.
           </p>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 w-full mb-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-1 md:gap-4 w-full mb-6 ">
             {team.map((member) => (
               <div
                 key={member.name}
-                className="max-w-[20em] h-[17em] flex flex-col items-center justify-center gap-2 max-[755px]:w-[18em] max-[685px]:w-[15em]"
+                className="max-w-[20em] min-h-[17em] flex flex-col items-center justify-center gap-2 "
               >
                 <div className="rounded-full overflow-hidden mb-4">
                   <Image src={member.src} alt={member.name} width={100} height={100} className="object-cover" />
                 </div>
                 <h3 className="text-primary font-semibold">{member.name}</h3>
-                <Link href="" className="font-bold text-red-600 no-underline hover:underline tracking-wide">
+                <Link href="#" className="font-bold text-red-600 no-underline hover:underline tracking-wide">
                   {member.id}
                 </Link>
-                <p className="text-sm font-medium text-center">
-                  {member.role} <span className="font-bold">MDCCanada.ca</span>
+                <p className="text-xs md:text-sm font-medium text-center">
+                  {member.role} <span className="font-bold">MDCVisa.ca</span>
                 </p>
               </div>
             ))}
@@ -268,7 +268,7 @@ export default function WorkingHolidayPage() {
 
       <section className="w-full min-h-[40em] flex items-center justify-center py-10">
         
-        <div className="mt-4 w-[95%]">
+        <div className="mt-4 w-full md:w-[95%]">
           <FAQAccordion faqs={faqs} />
         </div>
       </section>

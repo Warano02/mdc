@@ -42,7 +42,7 @@ export default function TableOfContents({ items }: TableOfContentsProps) {
   };
 
   return (
-    <aside className="w-[200px] shrink-0 sticky top-28 self-start">
+    <aside className="hidden md:block w-50 shrink-0 sticky top-28 self-start">
       <div className="bg-primary text-white text-sm font-bold px-4 py-3">
         Table of Contents
       </div>
