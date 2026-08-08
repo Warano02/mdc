@@ -3,8 +3,8 @@ import Testimonial from "../Testimonial"
 function TestimonySection() {
     return (
         <section className="border-y-2 border-y-primary relative w-full">
-            <div className="container min-h-132.5 md:flex justify-between py-6">
-                <div className="w-full md:flex-1 shrink-0 px-4 space-y-12">
+            <div className="container min-h-132.5 md:flex justify-between py-6 relative">
+                <div className="w-full md:flex-1 shrink-0 space-y-12">
                     <div className="relative space-y-6">
                         <h1 className="text-2xl md:text-4xl md:max-w-2/3 ">
                             Real Stories of Exceptional Service
@@ -15,7 +15,7 @@ function TestimonySection() {
                         Hear from our delighted customers as they share their genuine experiences. Explore their glowing testimonials and discover why our service stands out. Join us and experience excellence firsthand.
                     </p>
                 </div>
-                <div className="w-full md:w-158.5 relative">
+                <div className="w-full md:max-w-155.5 md:flex-1 relative">
                     <div className="grid grid-flow-col grid-rows-2 gap-4 overflow-scroll overflow-y-hidden testimony-scrollbar  pb-2 w-full">
                         {
                             Array.from({ length: 21 }).map((e, idx) => <Testimonial key={idx} />)

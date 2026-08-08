@@ -61,7 +61,7 @@ const story = [
 
 export default function HomePage() {
   return (
-    <main className="w-screen relative">
+    <main className=" relative">
       <section className="w-full h-auto  bg-[url('/img/home_1.webp'),linear-gradient(to_left,rgb(255,255,255),rgb(40,49,124))] bg-cover bg-no-repeat  relative ">
         <div className="container w-full md:h-128.5 flex flex-col justify-center items-center bg-[linear-gradient(to_left,rgba(255, 255, 255, 0.47),rgba(3,13,100,0.59))] bg-auto bg-no-repeat ">
           <h1 className="text-3xl text-center md:text-start text-white font-(--font-heading) ">Your journey to Canada starts here</h1>
@@ -76,7 +76,7 @@ export default function HomePage() {
             </button>
           </SignupDialog>
 
-          <div className="grid grid-cols-2 w-full md:flex flex-wrap items-center gap-4  md:gap-2 my-6 relative">
+          <div className="grid grid-cols-2 w-full md:flex justify-center items-center gap-4  md:gap-2 my-6 relative">
             <div className="w-full md:w-50 h-16.5 rounded-lg relative overflow-hidden">
               <Image src={"/cvr-review.png"} alt="cvr review" fill className="object-fit" />
             </div>
@@ -90,7 +90,7 @@ export default function HomePage() {
         </div>
 
         <div className="w-full min-h-32.5 bg-primary ">
-          <div className="md:container w-full h-full grid grid-cols-2 md:flex items-center justify-center gap-2 md:gap-4 relative ">
+          <div className="container w-full h-full grid grid-cols-2 md:flex items-center justify-center gap-2 md:gap-4 relative ">
             <div className="w-full md:w-60 h-20.5 relative flex items-center gap-2">
               <span className="relative w-19.5 md:w-14.5 h-11.5">
                 <Image src={"/img/icon/certified.png"} fill className="object-cover" alt="certified icon" />
@@ -128,11 +128,11 @@ export default function HomePage() {
       </section>
       <OurService />
       <TestimonySection />
-      <section className="w-full flex flex-col items-center py-16 px-4">
+      <section className="w-full flex flex-col items-center py-16  container">
         <h2 className="text-3xl text-primary font-serif text-center mb-12">
           What to expect in 4 simple steps
         </h2>
-        <div className="w-full max-w-6xl grid grid-cols-4 gap-6 max-[860px]:grid-cols-2 max-[480px]:grid-cols-1">
+        <div className="w-full  grid grid-cols-4 gap-6 max-[860px]:grid-cols-2 max-[480px]:grid-cols-1">
           {steps.map((step) => (
             <div key={step.title} className="flex flex-col items-center text-center gap-3">
               <div className="w-24 h-24 rounded-full bg-primary-50 flex items-center justify-center overflow-hidden">
@@ -150,21 +150,23 @@ export default function HomePage() {
         </SignupDialog>
       </section>
 
-      <section className="w-full bg-gray-50 flex flex-col items-center py-16 px-4">
-        <h2 className="text-3xl text-primary font-serif text-center mb-12">What We Do</h2>
-        <div className="w-full max-w-4xl flex flex-col gap-8">
-          {whatWeDo.map((text, i) => (
-            <div key={i} className="flex items-start gap-5">
-              <Image src="/img/icon/serive-check.jpg" alt="check" width={40} height={40} className="shrink-0 rounded" />
-              <p className="text-gray-700 leading-relaxed">{text}</p>
-            </div>
-          ))}
+      <section className="w-full bg-gray-50 flex flex-col items-center py-16 ">
+        <div className="w-full h-full container">
+          <h2 className="text-3xl text-primary font-serif text-center mb-12">What We Do</h2>
+          <div className="w-full  flex flex-col gap-8">
+            {whatWeDo.map((text, i) => (
+              <div key={i} className="flex items-start gap-5">
+                <Image src="/img/icon/serive-check.jpg" alt="check" width={40} height={40} className="shrink-0 rounded" />
+                <p className="text-gray-700 leading-relaxed">{text}</p>
+              </div>
+            ))}
+          </div>
+          <SignupDialog>
+            <button className="mt-12 h-12 px-10 bg-primary text-white font-bold text-sm tracking-widest hover:bg-primary-light transition-colors cursor-pointer">
+              GET ACCESS
+            </button>
+          </SignupDialog>
         </div>
-        <SignupDialog>
-          <button className="mt-12 h-12 px-10 bg-primary text-white font-bold text-sm tracking-widest hover:bg-primary-light transition-colors cursor-pointer">
-            GET ACCESS
-          </button>
-        </SignupDialog>
       </section>
 
 
@@ -174,8 +176,8 @@ export default function HomePage() {
         style={{ backgroundImage: "url('/img/story-bg.jpg')" }}
       >
         <div className="absolute inset-0 bg-primary/90" />
-        <div className="relative z-10 max-w-6xl mx-auto px-4">
-          <h2 className="text-sm tracking-widest text-white/80 font-bold text-center mb-10">OUR STORY</h2>
+        <div className="relative z-10 container">
+          <h2 className="text-sm md:text-2xl tracking-widest text-white/80 font-bold text-center mb-10">OUR STORY</h2>
           <div className="grid grid-cols-2 gap-10 max-[700px]:grid-cols-1">
             {story.map((item) => (
               <div key={item.title}>

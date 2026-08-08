@@ -72,9 +72,9 @@ export default function ContactSection() {
   };
 
   return (
-    <section className="w-full flex gap-8 justify-center items-center py-12 flex-col md:flex-row md:items-start px-4">
+    <section className="w-full flex gap-8 justify-center items-center py-12 flex-col md:flex-row md:items-start ">
       <div className="w-full md:w-[22em] ml-0 md:ml-4">
-        <h1 className="mt-4 mb-6 text-2xl md:text-[2.5em] text-primary font-serif leading-tight">
+        <h1 className="mt-4 mb-6 text-2xl md:text-3xl text-primary font-serif leading-tight">
           Regulated Canadian Immigration Consultants
         </h1>
 
