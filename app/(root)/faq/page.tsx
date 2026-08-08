@@ -64,9 +64,9 @@ export default function FaqPage() {
         style={{ backgroundImage: "url('/img/home_1.webp')" }}
       >
         <div className="absolute inset-0 bg-linear-to-r from-[rgba(3,8,59,0.72)] to-[rgba(20,4,92,0.55)]" />
-        <div className="relative z-10 h-full flex flex-col justify-center">
+        <div className="relative z-10 h-full flex flex-col justify-center container">
           <div className="ml-12 max-w-[38em] text-white max-md:ml-0 max-md:items-center max-md:text-center max-md:px-6">
-            <h1 className="text-4xl font-serif mb-6">Frequently asked questions</h1>
+            <h1 className="text-4xl font-serif mb-6 text-white">Frequently asked questions</h1>
             <p className="font-semibold leading-relaxed mb-8">
               We provide the guidance and services to make your Canadian immigration process easy, affordable, and reliable.
             </p>
@@ -79,14 +79,14 @@ export default function FaqPage() {
         </div>
       </section>
 
-      <div className="w-full border-b border-gray-300 flex items-center px-8 h-12">
-        <h3 className="text-xs text-gray-800 max-w-5xl mx-auto w-full">
+      <div className="w-full border-b border-gray-300 flex items-center  h-12">
+        <h3 className="container text-xs text-gray-800 max-w-5xl mx-auto w-full">
           <Link href="/" className="text-gray-400 no-underline">HOME /</Link>
           {" "}FREQUENTLY ASKED QUESTIONS
         </h3>
       </div>
 
-      <div className="max-w-3xl mx-auto px-4 pt-10">
+      <div className="container pt-10">
         <h1 className="text-4xl font-bold text-primary border-b border-gray-300 pb-4 mb-2">FAQ&apos;s</h1>
         <p className="text-gray-700 leading-relaxed py-4">
           Our Regulated Canadian Immigration Consultants (RCICs) have a wealth of experience in dealing with all the challenges involved in the visa application process and are more than happy to answer any questions you may have.

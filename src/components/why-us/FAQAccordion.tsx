@@ -48,7 +48,7 @@ export default function FAQAccordion({ faqs = defaultFaqs, showTitle = true }: F
   };
 
   return (
-    <section className="w-full max-w-3xl mx-auto px-4 py-12">
+    <section className="w-full container py-12">
       {showTitle && (
         <div className="text-center mb-10">
           <h2 className="text-4xl font-bold text-primary font-serif italic">

@@ -40,7 +40,7 @@ const navItems: NavItem[] = [
       { label: "Yukon", href: "/about-canada/yukon" },
     ],
   },
-  { label: "NEWS", href: "/news" },
+  // { label: "NEWS", href: "/news" },
   { label: "FAQ", href: "/faq" },
   {
     label: "ABOUT US",
