@@ -40,12 +40,13 @@ const navItems: NavItem[] = [
       { label: "Yukon", href: "/about-canada/yukon" },
     ],
   },
+  { label: "WORKS", href: "/works" },
   // { label: "NEWS", href: "/news" },
-  { label: "FAQ", href: "/faq" },
   {
     label: "ABOUT US",
     href: "/about-us",
     submenu: [
+      { label: "FAQ", href: "/faq" },
       { label: "Known Agents", href: "/known-agents" },
       { label: "Meet Our Team", href: "/about-us/meet-our-team" },
       { label: "Testimonials", href: "/about-us/testimonials" },
@@ -113,7 +114,7 @@ export default function Header() {
                                 {sub.label}
                               </Link>
                               {sub.hasNested && <ChevronRight size={14} className="text-primary shrink-0" />}
-                              {sub.highlight && <span className="px-2 py-0.2 rounded-lg bg-green-500 text-xs border border-primary">New</span> }
+                              {sub.highlight && <span className="px-2 py-0.2 rounded-lg bg-green-500 text-xs border border-primary">New</span>}
                             </li>
                           ))}
                         </ul>
@@ -149,6 +150,6 @@ export default function Header() {
   );
 }
 
-const MobileNav=()=>{
+const MobileNav = () => {
   return <div></div>
 }

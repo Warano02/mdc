@@ -5,6 +5,10 @@ images: {
     remotePatterns: [
       {
         protocol: 'https',
+        hostname: "f.hellowork.com",
+      },
+      {
+        protocol: 'https',
         hostname: 'mdccanada.ca',
       },
       {
