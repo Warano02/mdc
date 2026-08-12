@@ -9,6 +9,10 @@ images: {
       },
       {
         protocol: 'https',
+        hostname: "images.unsplash.com",
+      },
+      {
+        protocol: 'https',
         hostname: 'mdccanada.ca',
       },
       {
