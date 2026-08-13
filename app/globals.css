@@ -107,8 +107,20 @@ body {
     font-weight: var(--font-weight-bold);
     color: var(--color-primary);
   }
-  .testimony-scrollbar {
-    scrollbar-width: thin;
+  .custom-scrollbar::-webkit-scrollbar {
+    height: 12px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #b8b8b8;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #272f7c;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #1f2668;
   }
 }
 .play-btn {

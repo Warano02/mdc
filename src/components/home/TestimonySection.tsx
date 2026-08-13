@@ -1,4 +1,6 @@
+import { testimonials } from "@/contants"
 import Testimonial from "../Testimonial"
+import Link from "next/link"
 
 function TestimonySection() {
     return (
@@ -16,11 +18,12 @@ function TestimonySection() {
                     </p>
                 </div>
                 <div className="w-full md:max-w-155.5 md:flex-1 relative">
-                    <div className="grid grid-flow-col grid-rows-2 gap-4 overflow-scroll overflow-y-hidden testimony-scrollbar  pb-2 w-full">
+                    <div className="grid grid-flow-col grid-rows-2 gap-4 overflow-scroll overflow-y-hidden custom-scrollbar  pb-2 w-full">
                         {
-                            Array.from({ length: 21 }).map((e, idx) => <Testimonial key={idx} />)
+                            testimonials.map((e, idx) => <Testimonial key={idx} {...e} />)
                         }
                     </div>
+                    <Link href="/about-us/testimonials">View More</Link>
                 </div>
             </div>
         </section>
