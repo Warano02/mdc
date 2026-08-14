@@ -1,4 +1,4 @@
-const WHATSAPP_NUMBER = "16044491100";
+const WHATSAPP_NUMBER = "18253054733";
 
 function WhatsAppIcon({ className }: { className?: string }) {
   return (

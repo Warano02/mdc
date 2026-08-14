@@ -85,8 +85,8 @@ export default function Footer() {
                         ))}
                     </div>
                     <p className="text-white/80 text-sm leading-7 mb-4">
-                        <Link href="mailto:support@mdccanada.ca" className="text-white/80 no-underline hover:text-white/50 transition-colors block">support@mdccanada.ca</Link>
-                        <Link href="tel:+16044491100" className="text-white/80 no-underline hover:text-white/50 transition-colors block">+1 604 449 1100</Link>
+                        <Link href="mailto:support@mdcapply.ca" className="text-white/80 no-underline hover:text-white/50 transition-colors block">support@mdcapply.ca</Link>
+                        <Link href="tel:+18253054733" className="text-white/80 no-underline hover:text-white/50 transition-colors block">+1 825 305 4733</Link>
                     </p>
                     <p className="text-white text-sm leading-7">
                         700 W Pender St,<br />Vancouver,<br />BC V6C 1GB,<br />Canada
@@ -96,7 +96,7 @@ export default function Footer() {
             <div className=" w-full relative h-[5em] bg-black ">
                 <div className="container w-full h-full flex justify-around items-center px-4 gap-4 ">
                     <Image src="https://dwyeyw425tqez.cloudfront.net/production/mdccanada-v2/browser/assets/images/Logo_white.svg" alt="Logo MDC" width={100} height={36} className="object-contain shrink-0" />
-                    <p className="text-white text-sm text-center">MdcCanada.ca｜700 W Pender St, Vancouver, BC V6C 1G8, Canada © Copyright {new Date().getFullYear()} MdcCanada.ca. All Rights Reserved</p>
+                    <p className="text-white text-sm text-center">MdcApply.ca｜700 W Pender St, Vancouver, BC V6C 1G8, Canada © Copyright {new Date().getFullYear()} MdcApply.ca. All Rights Reserved</p>
                 </div>
             </div>
         </footer>
