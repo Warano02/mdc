@@ -4,6 +4,7 @@ import { useState, type SubmitEvent } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import axiosInstance from "@/lib/axios";
+import Link from "next/link";
 
 export default function Login() {
   const router = useRouter();
@@ -31,17 +32,16 @@ export default function Login() {
 
   return (
     <div className="flex h-screen w-full">
-      <div className="w-full hidden md:inline-block">
+      <div className="w-full hidden sm:inline-block">
         <img className="h-full" src="/aside-img.png" alt="leftSideImage" />
       </div>
 
       <div className="w-full flex flex-col items-center justify-center">
-
         <form onSubmit={handleSubmit} className="md:w-96 w-80 flex flex-col items-center justify-center">
           <h2 className="text-4xl text-gray-900 font-medium">Sign in</h2>
           <p className="text-sm text-gray-500/90 mt-3">Welcome back! Please sign in to continue</p>
 
-          <button type="button" className="w-full mt-8 bg-gray-500/10 flex items-center justify-center h-12 rounded-full">
+          <button type="button" className="w-full mt-8 bg-gray-500/10 flex items-center justify-center h-12 rounded-full cursor-not-allowed">
             <img src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/login/googleLogo.svg" alt="googleLogo" />
           </button>
 
@@ -70,7 +70,7 @@ export default function Login() {
               <input className="h-5" type="checkbox" id="checkbox" />
               <label className="text-sm" htmlFor="checkbox">Remember me</label>
             </div>
-            <a className="text-sm underline" href="#">Forgot password?</a>
+            <Link className="text-sm underline" href="/forgot-password">Forgot password?</Link>
           </div>
 
           {error && (
@@ -79,10 +79,10 @@ export default function Login() {
             </div>
           )}
 
-          <button type="submit" disabled={submitting} className="mt-8 w-full h-11 rounded-full text-white bg-indigo-500 hover:opacity-90 transition-opacity disabled:opacity-60 disabled:cursor-not-allowed">
+          <button type="submit" disabled={submitting} className="cursor-pointer mt-8 w-full h-11 rounded-full text-white bg-primary hover:opacity-90 transition-opacity disabled:opacity-60 disabled:cursor-not-allowed">
             {submitting ? "Signing in..." : "Login"}
           </button>
-          <p className="text-gray-500/90 text-sm mt-4">Don’t have an account? <a className="text-indigo-400 hover:underline" href="#">Sign up</a></p>
+          <p className="text-gray-500/90 text-sm mt-4">Don’t have an account? <Link className="text-primary hover:underline" href="/sign-up">Sign up</Link></p>
         </form>
       </div>
     </div>
