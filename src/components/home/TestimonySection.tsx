@@ -17,13 +17,13 @@ function TestimonySection() {
                         Hear from our delighted customers as they share their genuine experiences. Explore their glowing testimonials and discover why our service stands out. Join us and experience excellence firsthand.
                     </p>
                 </div>
-                <div className="w-full md:max-w-155.5 md:flex-1 relative">
+                <div className="w-full flex flex-col items-center space-y-9 md:max-w-155.5 md:flex-1 relative">
                     <div className="grid grid-flow-col grid-rows-2 gap-4 overflow-scroll overflow-y-hidden custom-scrollbar  pb-2 w-full">
                         {
                             testimonials.map((e, idx) => <Testimonial key={idx} {...e} />)
                         }
                     </div>
-                    <Link href="/about-us/testimonials">View More</Link>
+                    <Link href="/about-us/testimonials" className="py-2 px-6 bg-primary text-white font-semibold">View More</Link>
                 </div>
             </div>
         </section>
