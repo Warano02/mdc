@@ -10,7 +10,7 @@ function OurService() {
             <p className="text-center text-gray-500 font-semibold my-12">
                 Our process, refined over many years, takes the frustration and mystery out of applying for a visa.
             </p>
-            <div className="grid grid-cols-4 overflow-scroll no-scrollbar gap-4 relative">
+            <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 overflow-scroll no-scrollbar gap-4 relative">
                 <div className="flex flex-col items-center rounded shadow h-105 space-y-12 shrink-0 bg-[#F7F7F7] p-4">
                     <div className="size-20  relative">
                         <Image alt="" src={"/img/icon/Icon_Services_ProfConsultants.svg"} fill className="object-fit" />

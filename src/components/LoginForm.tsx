@@ -4,6 +4,7 @@ import { X } from "lucide-react";
 import Link from "next/dist/client/link";
 import { useState } from "react";
 import axiosInstance from "@/lib/axios";
+import { useRouter } from "next/navigation";
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
@@ -11,6 +12,7 @@ const LoginForm = () => {
   const [usernameError, setUsernameError] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [loginError, setLoginError] = useState("");
+  const router=useRouter()
   const handleLogin = async () => {
     if (!username.trim()) { setUsernameError(true); return; }
     setUsernameError(false);
@@ -18,6 +20,7 @@ const LoginForm = () => {
     setSubmitting(true);
     try {
       await axiosInstance.post("/auth/login", { username, password });
+      router.replace("/account")
     } catch {
       setLoginError("Invalid username or password");
     } finally {

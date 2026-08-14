@@ -2,9 +2,10 @@
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Menu, Search, ChevronDown, ChevronRight, X } from "lucide-react";
+import { Menu, Search, ChevronDown, ChevronRight, X, ChevronLeft } from "lucide-react";
 import SignupDialog from "@/components/SignupDialog";
 import LoginForm from "./LoginForm";
+import { Drawer, DrawerClose, DrawerContent, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from "./ui/drawer";
 type SubItem = { label: string; hasNested?: boolean, href: string, highlight?: boolean };
 type NavItem = { label: string; submenu?: SubItem[], href: string };
 
@@ -55,7 +56,6 @@ const navItems: NavItem[] = [
   { label: "CONTACT US", href: "/contact-us" },
 ];
 export default function Header() {
-  const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [loginOpen, setLoginOpen] = useState(false);
 
@@ -76,9 +76,7 @@ export default function Header() {
     <header className="w-full bg-white shadow-[0_4px_20px_1px_rgba(0,0,0,0.2)] fixed top-0 z-50">
       <div className="container flex items-center h-[5.8em] relative justify-between">
         <div className="flex items-center h-full shrink-0 pr-4">
-          <button aria-label="Toggle navigation" onClick={() => setMobileOpen((p) => !p)} className="hidden max-[1088px]:flex items-center justify-center w-16 h-full text-primary bg-transparent border-none cursor-pointer">
-            <Menu size={28} />
-          </button>
+          <MobileNav />
           <Link href="/"><Image src="https://mdccanada.ca/assets/images/Logo_colour_tagline.svg" alt="MDC Canada" width={120} height={40} priority className="h-[80%] w-auto mt-2 object-contain" /></Link>
         </div>
         {searchOpen ? (
@@ -87,8 +85,8 @@ export default function Header() {
             <button onClick={() => setSearchOpen(false)} className="text-primary bg-transparent border-none cursor-pointer"><X size={20} /></button>
           </div>
         ) : (
-          <nav className={`h-full flex-1 max-[1088px]:flex-none max-[1088px]:absolute max-[1088px]:top-full max-[1088px]:left-0 max-[1088px]:w-full max-[1088px]:h-auto max-[1088px]:bg-white max-[1088px]:shadow-[0_4px_20px_1px_rgba(0,0,0,0.2)] max-[1088px]:p-4 max-[1088px]:z-50 ${mobileOpen ? "max-[1088px]:block" : "max-[1088px]:hidden"}`}>
-            <ul className="w-full h-full flex justify-between items-center list-none max-[1088px]:flex-col max-[1088px]:items-start max-[1088px]:gap-4 max-[1088px]:h-auto">
+          <nav className={`hidden lg:block h-full flex-1   `}>
+            <ul className="w-full h-full flex justify-between items-center list-none text-xs">
               {navItems.map((item) => (
                 <li key={item.label} className="relative group h-full flex items-center">
 
@@ -102,7 +100,7 @@ export default function Header() {
                   </Link>
 
                   {item.submenu && (
-                    <div className="absolute top-full left-0 z-1000 hidden group-hover:block pt-1 min-w-65">
+                    <div className="absolute top-full left-0 z-1000 hidden group-hover:block pt-1 lg:min-w-65">
                       <div className="bg-white border border-gray-200 shadow-[0_4px_20px_rgba(0,0,0,0.12)] rounded-sm overflow-hidden">
                         <div className="bg-primary px-4 py-1.5">
                           <span className="text-white text-[11px] font-bold tracking-wider uppercase">{item.label}</span>
@@ -126,7 +124,7 @@ export default function Header() {
             </ul>
           </nav>
         )}
-        <div className="hidden md:flex items-center h-full border-l border-gray-300 ml-2 pl-4 gap-1 shrink-0 relative" ref={loginRef}>
+        <div className="hidden lg:flex items-center h-full border-l border-gray-300 ml-2 pl-4 gap-1 shrink-0 relative" ref={loginRef}>
           {!searchOpen && (
             <button onClick={() => setLoginOpen((p) => !p)} className="flex items-center gap-1 text-primary font-bold text-sm bg-transparent border-none cursor-pointer whitespace-nowrap hover:text-primary-light transition-colors">
               Login <ChevronDown size={14} />
@@ -140,16 +138,120 @@ export default function Header() {
 
         </div>
 
-        <SignupDialog>
-          <button className="h-full w-1/2 md:w-70 bg-[#dc3545] text-white font-bold font-mono text-[1.1em] tracking-[0.5px] flex items-center justify-center border-none cursor-pointer hover:bg-[#e93c4e] shrink-0  max-[455px]:text-[0.85em]">
-            START TODAY
-          </button>
-        </SignupDialog>
+        <div className="hidden h-full sm:flex lg:hidden gap-2">
+          {!searchOpen && (
+            <button onClick={() => setLoginOpen((p) => !p)} className=" sm:flex lg:hidden items-center gap-1 text-primary font-bold text-sm bg-transparent border-none cursor-pointer whitespace-nowrap hover:text-primary-light transition-colors">
+              Login <ChevronDown size={14} />
+            </button>)}
+          {loginOpen && <LoginForm />}
+          <SignupDialog>
+            <button className="h-full w-1/2 sm:w-60 md:w-70 bg-[#dc3545] text-white font-bold font-mono text-[1.1em] tracking-[0.5px] flex items-center justify-center border-none cursor-pointer hover:bg-[#e93c4e] shrink-0  max-[455px]:text-[0.85em]">
+              START TODAY
+            </button>
+          </SignupDialog>
+        </div>
+
+          <SignupDialog>
+            <button className="h-full sm:hidden lg:block w-1/2 sm:w-60 md:w-70 bg-[#dc3545] text-white font-bold font-mono text-[1.1em] tracking-[0.5px] flex items-center justify-center border-none cursor-pointer hover:bg-[#e93c4e] shrink-0  max-[455px]:text-[0.85em]">
+              START TODAY
+            </button>
+          </SignupDialog>
       </div>
     </header>
   );
 }
 
 const MobileNav = () => {
-  return <div></div>
+  return <Drawer direction="left">
+    <DrawerTrigger className="flex relative" asChild>
+      <button aria-label="Toggle navigation" className="flex items-center justify-center w-16 h-full text-primary bg-transparent border-none cursor-pointer  sm:hidden">
+        <Menu size={28} />
+      </button>
+    </DrawerTrigger>
+    <DrawerContent>
+      <div className="flex justify-between px-4">
+        <DrawerHeader >
+          <Link href={"/"}>
+            <Image src="https://mdccanada.ca/assets/images/Logo_colour_tagline.svg" alt="Logo MDCCanada" width={80} height={40} />
+          </Link>
+
+          <DrawerTitle className="sr-only">Nav Links</DrawerTitle>
+        </DrawerHeader>
+        <DrawerClose>
+          <X />
+        </DrawerClose>
+      </div>
+
+      <ul className="px-4 mt-1 space-y-2">
+        {
+          navItems.map(el => <Elem data={el} key={el.label} />)
+        }
+      </ul>
+
+      <DrawerFooter className="w-full p-2 bg-[#EDF1FF]">
+        <div className="space-y-2">
+          <h3 className="font-bold">Easy Way To Travel</h3>
+          <p>We provide the guidance and services to make your Canadian immigration process easy, affordable, and reliable.</p>
+        </div>
+        {/* <div className="flex justify-between">
+          <Link href={""}>
+            <Image src="/icons/appstore-badge.svg" alt="App Store" width={120} height={40} />
+          </Link>
+          <Link href={""}>
+            <Image src="/icons/playstore-badge.svg" alt="Play Store" width={120} height={40} />
+          </Link>
+        </div> */}
+      </DrawerFooter>
+    </DrawerContent>
+  </Drawer>
+}
+
+const Elem = ({ data }: { data: NavItem }) => {
+  if (!data?.submenu) return <li><Link href={data.href}>{data.label} </Link></li>
+  return (
+    <li>
+      <Drawer direction="left">
+        <DrawerTrigger className="flex relative" asChild>
+          <div className="my-4 flex relative items-center gap-0.5">
+            <h2>{data.label} </h2>
+            <ChevronRight size={18} />
+          </div>
+        </DrawerTrigger>
+        <DrawerContent >
+          <div className="mt-6 flex justify-between px-4">
+            <DrawerHeader className="hidden">
+              <DrawerTitle className="hidden">Move Goal</DrawerTitle>
+            </DrawerHeader>
+            <DrawerClose>
+              <ChevronLeft />
+            </DrawerClose>
+            <DrawerClose>
+              <X />
+            </DrawerClose>
+          </div>
+
+          <ul className="mt-6 px-4 space-y-4">
+            {
+              data.submenu.map((el) => <Elem data={el} key={el.label} />)
+            }
+          </ul>
+
+          <DrawerFooter className="w-full p-2 bg-[#EDF1FF]">
+            <div className="space-y-2">
+              <h3 className="font-bold">Téléchargez l'app</h3>
+              <p>et postulez dans les premiers</p>
+            </div>
+            <div className="flex justify-between">
+              <Link href={""}>
+                <Image src="/icons/appstore-badge.svg" alt="App Store" width={120} height={40} />
+              </Link>
+              <Link href={""}>
+                <Image src="/icons/playstore-badge.svg" alt="Play Store" width={120} height={40} />
+              </Link>
+            </div>
+          </DrawerFooter>
+        </DrawerContent>
+      </Drawer>
+    </li>
+  )
 }
