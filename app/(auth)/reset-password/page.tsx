@@ -2,25 +2,30 @@
 import axiosInstance from "@/lib/axios"
 import { useRouter, useSearchParams } from "next/navigation"
 import { useEffect } from "react"
+import { toast } from "sonner"
 
 
 function page() {
-    const token = useSearchParams().get("w")
+    const searchParams = useSearchParams()
+    const token = searchParams.get("w")
     const router = useRouter()
+
     const verify = async () => {
         try {
             await axiosInstance.get("/auth/v?token=" + token)
-            router.replace("/reset-password/r")
+            console.log("Request done ")
+            router.push("/reset-password/r?" + searchParams.toString())
         } catch (e) {
             console.log("Invalid token ", e);
-
+            toast("Invalid token")
         }
     }
-    
+
     useEffect(() => {
         if (!token) return router.replace("/login")
         verify()
     }, [])
+
     return (
         <section className="w-screen h-screen flex items-center justify-center">
             <div className="size-10 border-2 border-dashed border-primary animate-spin rounded-full flex items-center justify-center">

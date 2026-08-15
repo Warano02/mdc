@@ -64,13 +64,13 @@ export default function Header() {
   useEffect(() => {
     if (searchOpen) searchRef.current?.focus();
   }, [searchOpen]);
-  useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      if (loginRef.current && !loginRef.current.contains(e.target as Node)) setLoginOpen(false);
-    };
-    if (loginOpen) document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
-  }, [loginOpen]);
+  // useEffect(() => {
+  //   const handler = (e: MouseEvent) => {
+  //     if (loginRef.current && !loginRef.current.contains(e.target as Node)) setLoginOpen(false);
+  //   };
+  //   if (loginOpen) document.addEventListener("mousedown", handler);
+  //   return () => document.removeEventListener("mousedown", handler);
+  // }, [loginOpen]);
 
   return (
     <header className="w-full bg-white shadow-[0_4px_20px_1px_rgba(0,0,0,0.2)] fixed top-0 z-50">

@@ -5,6 +5,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import axiosInstance from "@/lib/axios";
 import Link from "next/link";
+import { toast } from "sonner";
 
 export default function Login() {
   const router = useRouter();
@@ -19,6 +20,7 @@ export default function Login() {
     setError("");
     try {
       await axiosInstance.post("/auth/login", { email, password });
+      toast("Happy To see you again !")
       router.push("/account");
     } catch (err) {
       const message =
