@@ -12,12 +12,13 @@ interface IUser {
   createdAt: Date;
   updatedAt: Date;
 }
-type LoginResponse = { message: string;user?: IUser; error: boolean };
+type LoginResponse = { message: string; user?: IUser; error: boolean };
 interface AuthState {
   loading: boolean;
   login: (data: LoginData) => Promise<LoginResponse>;
   user: IUser;
   loadUser: () => void;
+  logout: () => void;
 }
 
 export const useAuthStore = create<AuthState>((set) => ({
@@ -48,6 +49,7 @@ export const useAuthStore = create<AuthState>((set) => ({
       console.log("Response of login ", data);
 
       localStorage.setItem("user", JSON.stringify(data.user));
+      set({ user: data.user });
       return { error: false, user: data.user, message: "" };
     } catch (e: any) {
       console.error("Error while login ", e);
@@ -55,6 +57,18 @@ export const useAuthStore = create<AuthState>((set) => ({
         error: true,
         message: e?.response?.data?.message || "Error while login",
       };
+    } finally {
+      set({ loading: false });
+    }
+  },
+  logout: async () => {
+    set({ loading: true });
+    try {
+      await axiosInstance.put("/a/logout");
+      localStorage.removeItem("user");
+      window.location.href = "/login";
+    } catch (e) {
+      console.log("Error occured while trying to logout ", e);
     } finally {
       set({ loading: false });
     }

@@ -6,31 +6,24 @@ import { useRouter } from "next/navigation";
 import axiosInstance from "@/lib/axios";
 import Link from "next/link";
 import { toast } from "sonner";
+import { useAuthStore } from "@/store/auth.store";
 
 export default function Login() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
-
+  const { loading, login } = useAuthStore()
   const handleSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitting(true);
     setError("");
-    try {
-      await axiosInstance.post("/auth/login", { email, password });
-      toast("Happy To see you again !")
-      router.push("/account");
-    } catch (err) {
-      const message =
-        (axios.isAxiosError(err) && (err.response?.data?.message as string)) ||
-        "Invalid Credentials !";
-      setError(message);
-    } finally {
-      setSubmitting(false);
-    }
-  };
+    const resp = await login({ password, email })
+    if (resp.error) return setError(resp.message)
+
+    toast("Happy To see you again !")
+    router.push("/account");
+  }
+
 
   return (
     <div className="flex h-screen w-full">
@@ -81,8 +74,8 @@ export default function Login() {
             </div>
           )}
 
-          <button type="submit" disabled={submitting} className="cursor-pointer mt-8 w-full h-11 rounded-full text-white bg-primary hover:opacity-90 transition-opacity disabled:opacity-60 disabled:cursor-not-allowed">
-            {submitting ? "Signing in..." : "Login"}
+          <button type="submit" disabled={loading} className="cursor-pointer mt-8 w-full h-11 rounded-full text-white bg-primary hover:opacity-90 transition-opacity disabled:opacity-60 disabled:cursor-not-allowed">
+            {loading ? "Signing in..." : "Login"}
           </button>
           <p className="text-gray-500/90 text-sm mt-4">Don’t have an account? <Link className="text-primary hover:underline" href="/sign-up">Sign up</Link></p>
         </form>

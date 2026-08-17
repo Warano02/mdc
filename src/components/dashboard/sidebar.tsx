@@ -11,6 +11,9 @@ import {
   MessageCircle,
   Receipt,
   Settings,
+  ChevronsUpDown,
+  HelpCircle,
+  LogOut,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
@@ -26,7 +29,11 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { dossier } from "@/mock-data/dossier";
+import { useAuthStore } from "@/store/auth.store";
+import { getInitial } from "@/lib";
+import { DropdownMenuSeparator } from "@radix-ui/react-dropdown-menu";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../ui/dropdown-menu";
+import { useEffect } from "react";
 
 const navItems = [
   { href: "/account", label: "Dashboard", icon: LayoutGrid },
@@ -63,14 +70,17 @@ function SidebarBrand() {
   );
 }
 
-export function DashboardSidebar({
-  ...props
-}: React.ComponentProps<typeof Sidebar>) {
+export function DashboardSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const pathname = usePathname();
+  const { user, loading, logout, loadUser } = useAuthStore()
+
+  useEffect(() => {
+    loadUser()
+  }, [])
 
   return (
-    <Sidebar className="lg:border-r-0!" collapsible="icon" {...props}>
-      <SidebarHeader className="border-b px-4 py-3 h-[65px] lg:h-[74px] flex items-center justify-center">
+    <Sidebar className="lg:border-r-0 border-none" collapsible="icon" {...props}>
+      <SidebarHeader className="px-4 py-3 h-16.25 lg:h-18.5 flex items-center justify-center">
         <SidebarBrand />
       </SidebarHeader>
 
@@ -90,11 +100,11 @@ export function DashboardSidebar({
                   <SidebarMenuButton
                     asChild
                     tooltip={item.label}
-                    className="w-full justify-start gap-3 text-muted-foreground hover:bg-muted hover:text-foreground"
+                    className="w-full justify-start gap-3  hover:bg-muted hover:text-foreground"
                   >
                     <Link href={item.href}>
                       <item.icon className={cn("size-4", active && "text-primary")} />
-                      <span className="text-sm font-medium group-data-[collapsible=icon]:hidden">
+                      <span className="text-sm  group-data-[collapsible=icon]:hidden">
                         {item.label}
                       </span>
                     </Link>
@@ -105,53 +115,63 @@ export function DashboardSidebar({
           </SidebarMenu>
         </SidebarGroup>
 
-        <SidebarGroup>
-          <SidebarGroupLabel className="text-xs text-muted-foreground uppercase tracking-wider px-3">
-            Account
-          </SidebarGroupLabel>
-          <SidebarMenu>
-            <SidebarMenuItem>
-              <SidebarMenuButton
-                asChild
-                tooltip="Profile"
-                className="w-full justify-start gap-3 text-muted-foreground hover:bg-muted hover:text-foreground"
-              >
-                <Link href="/account/profile">
-                  <Settings
-                    className={cn(
-                      "size-4",
-                      pathname?.startsWith("/account/profile") && "text-primary"
-                    )}
-                  />
-                  <span className="text-sm font-medium group-data-[collapsible=icon]:hidden">
-                    Profile
-                  </span>
-                </Link>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          </SidebarMenu>
-        </SidebarGroup>
+
       </SidebarContent>
 
-      <SidebarFooter className="px-3 py-4">
-        <Link
-          href="/account/messages"
-          className="flex items-center gap-3 rounded-lg border border-border bg-background p-3 hover:bg-muted transition-colors group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:p-1.5"
-        >
-          <Avatar className="size-9 border border-border shrink-0">
-            <AvatarImage src={dossier.agent.photo} />
-            <AvatarFallback>
-              {dossier.agent.name
-                .split(" ")
-                .map((n) => n[0])
-                .join("")}
-            </AvatarFallback>
-          </Avatar>
-          <div className="min-w-0 group-data-[collapsible=icon]:hidden">
-            <p className="text-sm font-medium truncate">{dossier.agent.name}</p>
-            <p className="text-xs text-muted-foreground truncate">Your RCIC agent</p>
-          </div>
-        </Link>
+
+      <SidebarFooter className="px-3 sm:px-4 lg:px-5 pb-3 sm:pb-4 lg:pb-5">
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton asChild className="h-9 sm:h-9.5">
+              <Link href="#">
+                <HelpCircle className="size-4 sm:size-5" />
+                <span className="text-sm">Help Center</span>
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+          <SidebarMenuItem>
+            <SidebarMenuButton asChild className="h-9 sm:h-9.5">
+              <Link href="#">
+                <Settings className="size-4 sm:size-5" />
+                <span className="text-sm">Settings</span>
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
+
+
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <div className="flex items-center gap-2 sm:gap-3 group-data-[collapsible=icon]:p-0 p-2 sm:p-3 rounded-lg cursor-pointer hover:bg-accent transition-colors">
+              <Avatar className="size-7 sm:size-8 group-data-[collapsible=icon]:size-5">
+                <AvatarImage src={user?.avatar} />
+                <AvatarFallback className="text-xs">{getInitial(user.name)}</AvatarFallback>
+              </Avatar>
+              <div className="flex-1 min-w-0 group-data-[collapsible=icon]:hidden">
+                <p className="font-semibold text-xs sm:text-sm ">{user.name} </p>
+                <p className="text-[10px] sm:text-xs text-muted-foreground truncate">
+                  {user.email}
+                </p>
+              </div>
+              <ChevronsUpDown className="size-4 text-muted-foreground shrink-0 group-data-[collapsible=icon]:hidden" />
+            </div>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" className="w-50">
+
+            <DropdownMenuSeparator />
+            <DropdownMenuItem className="text-destructive cursor-pointer" disabled={loading} onClick={() => logout()}>
+              {
+                loading ? <div>
+                  <span className="size-6  animate-spin" />
+                  Login out...
+                </div> : <>
+                  <LogOut className="size-4 mr-2" />
+                  Log out
+                </>
+              }
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </SidebarFooter>
     </Sidebar>
   );

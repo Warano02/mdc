@@ -112,7 +112,7 @@ export const dossier: Dossier = {
       id: "interview",
       title: "Interview",
       description: "Interview with an immigration officer, if required for your case.",
-      status: "upcoming",
+      status: "completed",
       date: null,
     },
     {
