@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import {
   Appointment,
   AppointmentStatus,
-  dossier,
+  submission,
 } from "@/mock-data/dossier";
 
 const modeConfig: Record<Appointment["mode"], { label: string; icon: typeof Video }> = {
@@ -22,10 +22,10 @@ const statusConfig: Record<AppointmentStatus, { label: string; className: string
 };
 
 export function AppointmentsView() {
-  const upcoming = dossier.appointments
+  const upcoming = submission.appointments
     .filter((a) => a.status === "upcoming")
     .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
-  const past = dossier.appointments
+  const past = submission.appointments
     .filter((a) => a.status !== "upcoming")
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
@@ -61,7 +61,7 @@ export function AppointmentsView() {
       <div>
         <h1 className="text-lg font-semibold">Appointments</h1>
         <p className="text-sm text-muted-foreground mt-0.5">
-          Your appointments with {dossier.agent.name}
+          Your appointments with {submission.agent.name}
         </p>
       </div>
 

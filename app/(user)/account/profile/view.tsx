@@ -5,11 +5,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { dossier } from "@/mock-data/dossier";
+import { submission } from "@/mock-data/dossier";
 
 export function ProfileView() {
   const [form, setForm] = useState({
-    name: dossier.clientName,
+    name: submission.clientName,
     email: "",
     phone: "",
     nationality: "",

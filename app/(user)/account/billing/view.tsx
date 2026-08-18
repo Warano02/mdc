@@ -4,7 +4,7 @@ import { format } from "date-fns";
 import { Receipt } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { InvoiceStatus, dossier } from "@/mock-data/dossier";
+import { InvoiceStatus, submission } from "@/mock-data/dossier";
 
 const statusConfig: Record<InvoiceStatus, { label: string; className: string }> = {
   paid: { label: "Paid", className: "bg-green-50 text-green-700" },
@@ -13,8 +13,8 @@ const statusConfig: Record<InvoiceStatus, { label: string; className: string }> 
 };
 
 export function BillingView() {
-  const total = dossier.invoices.reduce((sum, i) => sum + i.amount, 0);
-  const paid = dossier.invoices
+  const total = submission.invoices.reduce((sum, i) => sum + i.amount, 0);
+  const paid = submission.invoices
     .filter((i) => i.status === "paid")
     .reduce((sum, i) => sum + i.amount, 0);
   const outstanding = total - paid;
@@ -24,7 +24,7 @@ export function BillingView() {
       <div>
         <h1 className="text-lg font-semibold">Billing</h1>
         <p className="text-sm text-muted-foreground mt-0.5">
-          Fee history for case {dossier.reference}
+          Fee history for case {submission.reference}
         </p>
       </div>
 
@@ -44,14 +44,14 @@ export function BillingView() {
       </div>
 
       <div className="rounded-2xl border border-border bg-background overflow-hidden">
-        {dossier.invoices.map((invoice, index) => {
+        {submission.invoices.map((invoice, index) => {
           const status = statusConfig[invoice.status];
           return (
             <div
               key={invoice.id}
               className={cn(
                 "flex items-center justify-between gap-4 px-5 py-4",
-                index !== dossier.invoices.length - 1 && "border-b border-border"
+                index !== submission.invoices.length - 1 && "border-b border-border"
               )}
             >
               <div className="flex items-center gap-3 min-w-0">
