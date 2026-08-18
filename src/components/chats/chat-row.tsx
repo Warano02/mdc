@@ -7,10 +7,10 @@ import { ChatMessage } from "@/store/chat-store"
 
 function formatRelativeTime(iso: string) {
     const diffMin = Math.round((Date.now() - new Date(iso).getTime()) / 60000)
-    if (diffMin < 1) return "À l'instant"
-    if (diffMin < 60) return `Envoyé il y a ${diffMin} min`
+    if (diffMin < 1) return "Just Now"
+    if (diffMin < 60) return `Sent ${diffMin} min ago`
 
-    return `Envoyé il y a ${Math.round(diffMin / 60)} h`
+    return `Sent ${Math.round(diffMin / 60)}h ago`
 }
 
 export function ChatMessageRow({
@@ -98,21 +98,21 @@ export function ChatMessageRow({
 
                 {message.status === "failed" ? (
                     <MessageFooter className="flex items-center gap-1.5 text-xs text-destructive">
-                        <span>Échec de l&apos;envoi</span>
+                        <span>Fail to sent</span>
 
                         <button
                             type="button"
                             onClick={() => onRetry(message.id)}
-                            className="inline-flex items-center gap-1 font-medium underline-offset-2 hover:underline"
+                            className="inline-flex items-center gap-1 cursor-pointer underline-offset-2 hover:underline"
                         >
                             <RefreshCcw className="size-3" />
-                            Réessayer
+                            Retry
                         </button>
                     </MessageFooter>
                 ) : message.isMine && message.status !== "read" ? (
-                    <MessageFooter className="text-xs text-muted-foreground">
+                    <MessageFooter className="text-xs ">
                         {message.status === "sending"
-                            ? "Envoi..."
+                            ? "Sending..."
                             : formatRelativeTime(message.sentAt)}
                     </MessageFooter>
                 ) : null}

@@ -11,13 +11,13 @@ import {
     MessageScrollerViewport,
 } from "@/components/ui/message-scroller"
 import { ChatMessage, useChatStore } from "@/store/chat-store"
-import { sendMessage } from "@/lib/socket/chat-socket"
 import { ChatInput } from "./chat-input"
 import { ChatMessageRow } from "./chat-row"
 import ChatHeader from "./chat-header"
 import { useAuthStore } from "@/store/auth.store"
 import { getInitial } from "@/lib"
 import { connectSocket } from "@/lib/socket/socket"
+import { MessageCircle } from "lucide-react"
 
 function formatTime(iso: string) {
     return new Date(iso).toLocaleTimeString("fr-FR", {
@@ -43,7 +43,7 @@ function TimeSeparator({ time }: { time: string }) {
 function ChatWindow() {
     const router = useRouter()
     const { user } = useAuthStore()
-    const { chatId, setMessages, messages, handleRetry, consultant } = useChatStore()
+    const { chatId, setMessages, messages, handleRetry, consultant, loadMessages, sendMessage } = useChatStore()
 
     const handleSend = (text: string) => {
         const clientMessageId = crypto.randomUUID()
@@ -61,56 +61,71 @@ function ChatWindow() {
 
         setMessages(newMessage)
 
-        sendMessage({
-            chatId,
-            text,
-            clientMessageId,
-        })
+        sendMessage(newMessage)
     }
 
     useEffect(() => {
-        connectSocket()
+        loadMessages()
     }, [])
 
     return (
         <div className="flex h-full w-full flex-1 flex-col">
             <ChatHeader />
 
-            <MessageScrollerProvider
-                autoScroll
-                defaultScrollPosition="end"
-            >
-                <MessageScroller className="flex-1">
-                    <MessageScrollerViewport>
-                        <MessageScrollerContent className="py-3">
-                            {messages.map((message, index) => (
-                                <MessageScrollerItem
-                                    key={message.id}
-                                    messageId={message.id}
-                                >
-                                    {shouldShowSeparator(
-                                        messages[index - 1],
-                                        message
-                                    ) && (
-                                            <TimeSeparator
-                                                time={formatTime(message.sentAt)}
+            {
+                messages.length == 0 ? (
+                    <div className="flex-1 flex justify-center items-center flex-col gap-4">
+                        <div className="mb-5 flex size-20 items-center justify-center rounded-full bg-primary/10">
+                            <MessageCircle className="size-10 text-primary" />
+                        </div>
+
+                        <h1 className="text-xl font-semibold tracking-tight">
+                            No Message for now.
+                        </h1>
+
+                        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                            Some preocupation ?  Start chatting with your consultant now.
+                        </p>
+
+                    </div>
+                ) : (
+                    <MessageScrollerProvider
+                        autoScroll
+                        defaultScrollPosition="end"
+                    >
+                        <MessageScroller className="flex-1">
+                            <MessageScrollerViewport>
+                                <MessageScrollerContent className="py-3">
+                                    {messages.map((message, index) => (
+                                        <MessageScrollerItem
+                                            key={message.id}
+                                            messageId={message.id}
+                                        >
+                                            {shouldShowSeparator(
+                                                messages[index - 1],
+                                                message
+                                            ) && (
+                                                    <TimeSeparator
+                                                        time={formatTime(message.sentAt)}
+                                                    />
+                                                )}
+
+                                            <ChatMessageRow
+                                                message={message}
+                                                senderAvatarUrl={consultant.avatar}
+                                                senderFallback={getInitial(consultant.name)}
+                                                onRetry={handleRetry}
                                             />
-                                        )}
+                                        </MessageScrollerItem>
+                                    ))}
+                                </MessageScrollerContent>
+                            </MessageScrollerViewport>
 
-                                    <ChatMessageRow
-                                        message={message}
-                                        senderAvatarUrl={consultant.avatarUrl}
-                                        senderFallback={getInitial(consultant.name)}
-                                        onRetry={handleRetry}
-                                    />
-                                </MessageScrollerItem>
-                            ))}
-                        </MessageScrollerContent>
-                    </MessageScrollerViewport>
-
-                    <MessageScrollerButton />
-                </MessageScroller>
-            </MessageScrollerProvider>
+                            <MessageScrollerButton />
+                        </MessageScroller>
+                    </MessageScrollerProvider>
+                )
+            }
 
             <ChatInput onSend={handleSend} />
         </div>

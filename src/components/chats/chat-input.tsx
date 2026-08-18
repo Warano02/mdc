@@ -70,7 +70,7 @@ export function ChatInput({ onSend }: { onSend: (text: string) => void }) {
                     type="button"
                     onClick={handleSend}
                     aria-label="Envoyer"
-                    className="rounded-full bg-primary p-2 text-primary-foreground hover:bg-primary/90"
+                    className="rounded-full bg-primary p-2 text-white hover:bg-primary/90"
                 >
                     <Send className="size-[18px]" />
                 </button>
