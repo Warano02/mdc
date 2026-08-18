@@ -43,7 +43,7 @@ export const useAuthStore = create<AuthState>((set) => ({
   login: async (payload) => {
     try {
       set({ loading: true });
-      const { data } = await axiosInstance.post<{ user: IUser }>("/a/login", {
+      const { data } = await axiosInstance.post<{ user: IUser }>("/auth/login", {
         ...payload,
       });
       console.log("Response of login ", data);

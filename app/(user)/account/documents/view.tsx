@@ -4,7 +4,7 @@ import { format } from "date-fns";
 import { FileText, Upload } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { DocumentStatus, dossier } from "@/mock-data/dossier";
+import { DocumentStatus, submission } from "@/mock-data/dossier";
 
 const statusConfig: Record<
   DocumentStatus,
@@ -21,19 +21,19 @@ export function DocumentsView() {
       <div>
         <h1 className="text-lg font-semibold">Documents</h1>
         <p className="text-sm text-muted-foreground mt-0.5">
-          Documents required for case {dossier.reference}
+          Documents required for case {submission.reference}
         </p>
       </div>
 
       <div className="rounded-2xl border border-border bg-background overflow-hidden">
-        {dossier.documents.map((doc, index) => {
+        {submission.documents.map((doc, index) => {
           const status = statusConfig[doc.status];
           return (
             <div
               key={doc.id}
               className={cn(
                 "flex items-center justify-between gap-4 px-5 py-4",
-                index !== dossier.documents.length - 1 && "border-b border-border"
+                index !== submission.documents.length - 1 && "border-b border-border"
               )}
             >
               <div className="flex items-center gap-3 min-w-0">

@@ -56,7 +56,7 @@ export interface Invoice {
   status: InvoiceStatus;
 }
 
-export interface Dossier {
+export interface ISubmission {
   clientName: string;
   visaType: string;
   reference: string;
@@ -68,7 +68,7 @@ export interface Dossier {
   invoices: Invoice[];
 }
 
-export const dossier: Dossier = {
+export const submission: ISubmission = {
   clientName: "MDC Client",
   visaType: "Express Entry — Permanent Residence",
   reference: "MDC-2026-00482",

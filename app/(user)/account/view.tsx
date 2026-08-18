@@ -5,17 +5,17 @@ import { format } from "date-fns";
 import { Workflow, FileText, Calendar, Receipt, ArrowRight } from "lucide-react";
 import { StatCard } from "@/components/dashboard/stat-card";
 import { CaseTimeline } from "@/components/dashboard/case-timeline";
-import { dossier } from "@/mock-data/dossier";
+import { submission } from "@/mock-data/dossier";
 
 export function AccountView() {
-  const currentStep = dossier.steps.find((s) => s.status === "current");
-  const pendingDocuments = dossier.documents.filter(
+  const currentStep = submission.steps.find((s) => s.status === "current");
+  const pendingDocuments = submission.documents.filter(
     (d) => d.status !== "approved"
   ).length;
-  const nextAppointment = dossier.appointments.find(
+  const nextAppointment = submission.appointments.find(
     (a) => a.status === "upcoming"
   );
-  const dueInvoice = dossier.invoices.find((i) => i.status !== "paid");
+  const dueInvoice = submission.invoices.find((i) => i.status !== "paid");
 
   return (
     <div className="flex flex-col gap-6 w-full py-6 px-4.5">
@@ -24,7 +24,7 @@ export function AccountView() {
           icon={Workflow}
           label="Case status"
           value={currentStep?.title ?? "Completed"}
-          hint={dossier.visaType}
+          hint={submission.visaType}
           href="/account/case"
         />
         <StatCard
@@ -62,7 +62,7 @@ export function AccountView() {
           <div>
             <h2 className="text-base font-semibold">Case progress</h2>
             <p className="text-xs text-muted-foreground mt-0.5">
-              Reference {dossier.reference}
+              Reference {submission.reference}
             </p>
           </div>
           <Link
@@ -73,7 +73,7 @@ export function AccountView() {
             <ArrowRight className="size-4" />
           </Link>
         </div>
-        <CaseTimeline steps={dossier.steps} />
+        <CaseTimeline steps={submission.steps} />
       </div>
     </div>
   );

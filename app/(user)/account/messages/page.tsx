@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { MessagesView } from "./view";
+import ChatWindow from "@/components/chats/chat-window";
 
 export const metadata: Metadata = {
   title: "Messages | MDC Canada",
@@ -8,5 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function MessagesPage() {
-  return <MessagesView />;
+  return <ChatWindow/>;
 }
