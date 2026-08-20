@@ -15,7 +15,7 @@ import { ChatInput } from "./chat-input"
 import { ChatMessageRow } from "./chat-row"
 import ChatHeader from "./chat-header"
 import { useAuthStore } from "@/store/auth.store"
-import { getInitial } from "@/lib"
+import { axiosInstance, getInitial } from "@/lib"
 import { connectSocket } from "@/lib/socket/socket"
 import { MessageCircle } from "lucide-react"
 
@@ -44,7 +44,9 @@ function ChatWindow() {
     const router = useRouter()
     const { user } = useAuthStore()
     const { chatId, setMessages, messages, handleRetry, consultant, loadMessages, sendMessage } = useChatStore()
-
+    const [isVisible, setIsVisible] = useState(() =>
+        typeof document !== 'undefined' ? document.visibilityState === 'visible' : true
+    );
     const handleSend = (text: string) => {
         const clientMessageId = crypto.randomUUID()
         const sentAt = new Date().toISOString()
@@ -66,8 +68,54 @@ function ChatWindow() {
 
     useEffect(() => {
         loadMessages()
-    }, [])
+        const interval = setInterval(async () => {
+            try {
+                const { data } = await axiosInstance.get<ChatMessage[]>("/chat/mess")
 
+                if (messages.length >= data.length) return
+
+                const m = data.at(-1)
+                if (!m) return data
+
+                const c = (text?: string) => {
+                    if (!text) return null
+                    return text.length > 80
+                        ? `${text.slice(0, 80)}...`
+                        : text
+                }
+
+                if (Notification.permission === "granted" && !isVisible) {
+                    new Notification("You have a new message", {
+                        body: c(m.text) || "Image",
+                        icon: "/icons/chat.png",
+                        badge: "/icons/chat-badge.png",
+                        tag: `chat-${chatId}`,
+                        data: {
+                            chatId,
+                            messageId: m.id,
+                        },
+                    })
+                }
+                setMessages(m)
+            } catch (e) {
+                console.log("Error occured while trying to get new messages :", e)
+            }
+        }, 2000)
+
+        return () => clearInterval(interval)
+    }, [chatId, isVisible])
+
+    useEffect(() => {
+        const handleVisibilityChange = () => {
+            setIsVisible(document.visibilityState === 'visible');
+        };
+
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+
+        return () => {
+            document.removeEventListener('visibilitychange', handleVisibilityChange);
+        };
+    }, []);
     return (
         <div className="flex h-full w-full flex-1 flex-col">
             <ChatHeader />
