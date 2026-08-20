@@ -73,7 +73,7 @@ export default function VisasPage() {
         <div className="absolute inset-0 bg-linear-to-l from-[rgba(20,4,92,0.23)] to-[rgba(3,8,59,0.57)]" />
         <div className="relative z-10 h-full flex flex-col justify-center">
           <div className="ml-12 flex flex-col justify-center w-[50em] max-w-full text-white max-md:ml-0 max-md:items-center max-md:w-full">
-            <h1 className="text-6xl font-bold mb-6 max-sm:text-5xl">Canadian Visas</h1>
+            <h1 className="text-6xl font-bold mb-6 max-sm:text-5xl text-white">Canadian Visas</h1>
             <p className="text-lg font-bold mb-10 max-sm:w-[95%] max-sm:text-center">
               A quick guide to permits and immigration programs
             </p>

@@ -20,25 +20,28 @@ const stats = [
 export default function RoliMathurPage() {
     return (
         <main className="w-full">
-            <section className="w-full h-[36em] bg-cover bg-center bg-no-repeat relative"
-                style={{ backgroundImage: "url('/img/home_1.webp')" }}>
-                <div className="absolute inset-0 bg-linear-to-r from-[rgba(3,8,59,0.57)] to-[rgba(20,4,92,0.23)]" />
-                <div className="relative z-10 h-full flex flex-col justify-center">
-                    <div className="ml-12 flex flex-col justify-center w-[50em] max-w-full text-white max-md:ml-0 max-md:items-center max-md:w-full max-md:px-6">
-                        <h1 className="text-5xl font-serif mb-6">Meet the Experts: Roli Mathur</h1>
-                        <p className="font-semibold leading-relaxed mb-8 max-w-sm">
+            <section
+                className="w-full h-[36em] bg-cover bg-center bg-no-repeat relative"
+                style={{ backgroundImage: "url('/img/title/img_header_knownagents_desktop.webp')" }}
+            >
+                <div className="absolute inset-0 bg-linear-to-l from-[rgba(20,4,92,0.23)] to-[rgba(3,8,59,0.57)]" />
+                <div className="container relative z-10 h-full flex flex-col justify-center">
+                    <div className="flex flex-col justify-center w-full max-w-full text-white max-md:ml-0 max-md:items-center max-md:w-full">
+                        <h1 className="text-white text-5xl font-bold mb-6 max-sm:text-4xl max-sm:text-center max-[450px]:text-3xl">
+                            Meet the Experts: Roli Mathur
+                        </h1>
+                        <p className="text-lg font-bold mb-10 max-sm:w-[95%] max-sm:text-center">
                             Meet Roli Mathur, discover her expertise, insights, and role in helping clients succeed in Canada.
                         </p>
                         <SignupDialog>
-                            <button className="border border-white text-white px-8 py-3 w-fit tracking-widest text-sm font-semibold hover:bg-white hover:text-primary transition-colors">
+                            <button className="w-[10em] h-10 font-bold border-2 border-white text-white bg-transparent hover:bg-white hover:text-primary transition-colors duration-300 cursor-pointer">
                                 GET STARTED
                             </button>
                         </SignupDialog>
                     </div>
                 </div>
             </section>
-
-            <div className="w-full border-b border-gray-300 flex items-center px-8 h-12">
+            <div className="w-full border-b border-gray-300 flex items-center px-8 h-12 container">
                 <h3 className="text-xs text-gray-800">
                     <Link href="/" className="text-gray-400 no-underline">HOME /</Link>
                     {" "}MEET THE EXPERTS: ROLI MATHUR
