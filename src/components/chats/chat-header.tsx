@@ -9,7 +9,7 @@ export default function ChatHeader() {
         <div className="flex items-center justify-between border-b border-border px-4 py-3">
             <div className="flex items-center gap-3">
                 <Avatar className="size-10">
-                    <AvatarImage src={consultant.avatarUrl} alt={consultant.name} />
+                    <AvatarImage src={consultant.avatar} alt={consultant.name} />
                     <AvatarFallback>{getInitial(consultant.name)}</AvatarFallback>
                 </Avatar>
 

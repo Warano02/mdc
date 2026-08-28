@@ -71,9 +71,9 @@ export default function HomePage() {
           </h3>
           <br />
           <SignupDialog>
-            <button className="w-42.5 h-10.5 font-bold text-white bg-transparent border-2 border-white cursor-pointer transition-all duration-300 hover:bg-white hover:text-primary">
+            <span className="w-42.5 h-10.5 font-bold text-white bg-transparent border-2 border-white cursor-pointer transition-all duration-300 hover:bg-white hover:text-primary">
               GET STARTED
-            </button>
+            </span>
           </SignupDialog>
 
           <div className="grid grid-cols-2 w-full md:flex justify-center items-center gap-4  md:gap-2 my-6 relative">

@@ -3,15 +3,30 @@
 import { CheckCircle2, Circle } from "lucide-react";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
-import { CaseStep } from "@/mock-data/dossier";
+import { CaseStep } from "../../../app/(user)/account/view";
+import { Skeleton } from "../ui/skeleton";
 
 interface CaseTimelineProps {
   steps: CaseStep[];
+  loading: boolean
 }
 
-export function CaseTimeline({ steps }: CaseTimelineProps) {
+export function CaseTimeline({ steps, loading }: CaseTimelineProps) {
   const displaySteps = steps.slice(0, 4);
 
+  if (loading) {
+    return <ol className="flex flex-col space-y-4 w-full relative">
+      {
+        Array.from({ length: 6 }).map((_, idx) => <div key={idx} className="flex gap-4 items-center ">
+          <Skeleton className="size-6 rounded-full" />
+          <div className="w-1/2 relative space-y-4">
+            <Skeleton className="w-full h-2 block" />
+            <Skeleton className="w-2/3 h-2 block" />
+          </div>
+        </div>)
+      }
+    </ol>
+  }
   return (
     <ol className="flex flex-col">
       {displaySteps.map((step, index) => {

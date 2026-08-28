@@ -1,6 +1,6 @@
-export type CaseStepStatus = "completed" | "current" | "upcoming";
+ type CaseStepStatus = "completed" | "current" | "upcoming";
 
-export interface CaseStep {
+ interface CaseStep {
   id: string;
   title: string;
   description: string;
