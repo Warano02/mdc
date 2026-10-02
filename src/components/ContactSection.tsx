@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import axiosInstance from "@/lib/axios";
+import { APP_FORMATED_PHONE_NUMBER, APP_PHONE_NUMBER } from "@/contants";
 
 const socialLinks = [
   {
@@ -90,15 +91,15 @@ export default function ContactSection() {
 
           <div>
             <h2 className="text-[1.3em] font-bold text-primary mb-1 font-serif">PHONE</h2>
-            <a href="tel:+18253054733" className="text-gray-900 font-bold hover:underline">
-              +1 825 305 4733
+            <a href={`tel:${APP_PHONE_NUMBER}`} className="text-gray-900 font-bold hover:underline">
+              {APP_FORMATED_PHONE_NUMBER}
             </a>
           </div>
 
           <div>
             <h2 className="text-[1.3em] font-bold text-primary mb-1 font-serif">WHATSAPP</h2>
-            <a href="tel:+18253054733" className="text-gray-900 font-bold hover:underline">
-               +1 825 305 4733
+            <a href={`tel:${APP_PHONE_NUMBER}`} className="text-gray-900 font-bold hover:underline">
+              {APP_FORMATED_PHONE_NUMBER}
             </a>
           </div>
 

@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
+import { APP_FORMATED_PHONE_NUMBER, APP_PHONE_NUMBER } from "@/contants";
 const siteMap = [
     { label: "Home", href: "/" },
     { label: "Why use an RCIC?", href: "/why-use-an-rcic" },
@@ -86,7 +87,7 @@ export default function Footer() {
                     </div>
                     <p className="text-white/80 text-sm leading-7 mb-4">
                         <Link href="mailto:support@mdcapply.ca" className="text-white/80 no-underline hover:text-white/50 transition-colors block">support@mdcapply.ca</Link>
-                        <Link href="tel:+18253054733" className="text-white/80 no-underline hover:text-white/50 transition-colors block">+1 825 305 4733</Link>
+                        <Link href={`tel:${APP_PHONE_NUMBER}`} className="text-white/80 no-underline hover:text-white/50 transition-colors block">{APP_FORMATED_PHONE_NUMBER} </Link>
                     </p>
                     <p className="text-white text-sm leading-7">
                         700 W Pender St,<br />Vancouver,<br />BC V6C 1GB,<br />Canada

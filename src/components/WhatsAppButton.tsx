@@ -1,4 +1,6 @@
-const WHATSAPP_NUMBER = "18253054733";
+import { APP_PHONE_NUMBER } from "@/contants";
+
+const WHATSAPP_NUMBER = APP_PHONE_NUMBER;
 
 function WhatsAppIcon({ className }: { className?: string }) {
   return (

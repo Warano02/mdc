@@ -1,0 +1,2 @@
+export const APP_PHONE_NUMBER = "+18732754967";
+export const APP_FORMATED_PHONE_NUMBER = "+1 873 275 4967";
