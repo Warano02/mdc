@@ -143,7 +143,10 @@ export default function RootLayout({ children, }: Readonly<{ children: React.Rea
           enableSystem={false}
           disableTransitionOnChange
         >
-          {children}
+          {/* {children} */}
+          <div className="h-screen w-screen flex justify-center items-center text-6xl font-extrabold">
+            .
+          </div>
           <Toaster />
         </ThemeProvider>
       </body>
